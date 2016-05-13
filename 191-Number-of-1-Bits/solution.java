@@ -34,4 +34,6 @@ public class Solution {
 
   that's why above code doesn't work for number   2147483648 (10000000000000000000000000000000),
   because its 32th bit is 1, but bit 30 to 0 is 0, devison won't use sign bit to compute
+  
+  ??? why using n >> 1 doesn't work?
 */
