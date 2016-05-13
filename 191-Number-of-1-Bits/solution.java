@@ -3,13 +3,12 @@ public class Solution {
     public int hammingWeight(int n) {
         
         int ans = 0;
-        int count = 32;
+        int mask = 1;
         
-        while(n != 0 && n != -0){
-            if(n%2 == 1)
+        for(int i = 0; i < 32; i++){
+            if((n & mask) != 0)
                 ans++;
-            n = n >> 1;
-            // count--;
+            mask = mask << 1;
         }
         
         return ans;
