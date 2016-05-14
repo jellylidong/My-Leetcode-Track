@@ -9,7 +9,8 @@
  */
 public class Solution {
     
-    
+    //remember how to define Comparator
+    //don't forget <> !!!!
     public class myComp implements Comparator<Interval>{
         @Override
         public int compare(Interval i1, Interval i2){
