@@ -19,15 +19,15 @@ public class Solution {
         
         ListNode next = head;
         ListNode cur = head;
+        ListNode pre = null;
         
         while(cur != null){
-            head = next;
-            next = cur.next;
-            cur.next = next.next;
-            next.next = cur;
-            cur = next;
+           next = cur.next;
+           cur.next = pre;
+           pre = cur;
+           cur = next;
         }
         
-        return head;
+        return pre;
     }
 }
