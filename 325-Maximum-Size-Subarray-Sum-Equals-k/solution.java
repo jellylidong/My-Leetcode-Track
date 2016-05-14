@@ -1,21 +1,21 @@
 public class Solution {
     public int maxSubArrayLen(int[] nums, int k) {
-        int len = nums.length;
-        int[] dp = new int[len];
-        int ans = 0;
-        for(int i = 0; i < len; i++){
-            for(int j = i; j < len; j++){
-                if(i == j)
-                    dp[j] = nums[i];
-                else
-                    dp[j] = dp[j-1] + nums[j];
-                    
-                if(dp[j] == k)
-                    ans = Math.max(ans, j-i);
-            }
+        HashMap<Integer, Integer> map = new HashMap<>();
+        int sum = 0;
+        int max = 0;
+        
+        for(int i = 0; i < nums.length; i++){
+            sum += nums[i];
+            if(sum == k)
+                max = Math.max(max, i+1); // i+1 always > previous max
+            else if(map.containsKey(sum-k))
+                max = Math.max(max, i - map.get(sum-k));
+                
+            if(!map.containsKey(sum))
+                map.put(sum, i);
         }
         
-        return ans;
+        return max;
     }
     
     
