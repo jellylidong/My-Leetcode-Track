@@ -12,7 +12,7 @@ public class Solution {
             count[ts-'a']--;
         }
         
-        for(int i = 0; i < s.length(); i++){
+        for(int i = 0; i < 27; i++){
             if(count[i] < 0)
                 return false;
         }
