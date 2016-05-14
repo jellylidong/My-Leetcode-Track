@@ -19,7 +19,9 @@ public class Solution {
         
         ListNode next = head;
         ListNode cur = head;
-        ListNode pre = null;
+        ListNode pre = null; 
+        //regard the linked list as a circle, with a "null node"
+        // pre is the end of the linked list, should be null initially
         
         while(cur != null){
            next = cur.next;
