@@ -11,7 +11,7 @@ public class Solution {
         dp[3] = false;
         
         for(int i = 4; i < n; i++){
-            boolean dpi = dp[i-1] || dp[i-2] || dp[i-3];
+            boolean dpi = dp[0] || dp[1] || dp[2];
             dp[0] = dp[1];
             dp[1] = dp[2];
             dp[2] = dp[3];
