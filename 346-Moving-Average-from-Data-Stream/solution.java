@@ -15,8 +15,9 @@ public class MovingAverage {
     }
     
     public double next(int val) {
+        id = count%size;
         count++;
-        id = count%size - 1;
+        
         sum = sum - buffer[id] + val;
         buffer[id] = val;
         return (double)sum/(count < size? (double)count: (double)size);
