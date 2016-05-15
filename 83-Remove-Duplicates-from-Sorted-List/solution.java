@@ -17,14 +17,15 @@ public class Solution {
         ListNode pre = head;
         
         while(cur != null){
-            while(cur != null && cur.next != null && cur.next.val == cur.val)
+            while(cur != null && cur.val == pre.val)
                 cur = cur.next;
-            pre.next = cur;
-            pre = cur;
-            if(cur == null)
-                break;
-            else
-                cur = cur.next;
+            if(pre != cur){
+                pre.next = cur;
+                pre = cur;
+            }
+            
+            cur = cur.next;
+                
         }
         
         return helper.next;
