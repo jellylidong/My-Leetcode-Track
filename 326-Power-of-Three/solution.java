@@ -6,3 +6,8 @@ public class Solution {
         return n == 1;
     }
 }
+
+//star reason: follow up failed
+//solution
+//return ( n>0 &&  1162261467%n==0);
+//1162261467 is the largest power3 integer
