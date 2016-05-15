@@ -1,5 +1,7 @@
 public class Solution {
     public int maxProfit(int[] p) {
+        if(p.length == 0)
+            return 0;
         int min = p[0];
         int ans = 0;
         
