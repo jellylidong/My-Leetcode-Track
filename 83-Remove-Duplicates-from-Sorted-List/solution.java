@@ -24,7 +24,10 @@ public class Solution {
                 pre = cur;
             }
             
-            cur = cur.next;
+           if(cur == null)
+                break;
+            else
+                cur = cur.next;
                 
         }
         
