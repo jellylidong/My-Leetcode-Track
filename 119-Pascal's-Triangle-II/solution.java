@@ -4,12 +4,12 @@ public class Solution {
         if(n == 0)
             return list;
         list.add(1); 
-        for(int i = 1; i <= n; i++){
+        for(int i = 2; i <= n; i++){
             for(int j = i; j > 0; j--){
                 if(j > list.size())
-                    list.add(list.get(j-1));
+                    list.add(1);
                 else
-                    list.set(j-1, list.get(j) + list.get(j-1));
+                    list.set(j-1, list.get(j-1) + list.get(j-2));
             }
         }
         
