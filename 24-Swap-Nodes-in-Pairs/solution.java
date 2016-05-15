@@ -13,16 +13,19 @@ public class Solution {
         ListNode cur = head;
         ListNode cur2 = head;
         
-        while(head != null){
+        while(cur != null){
             if(cur.next != null){
                 cur2 = cur.next;
                 cur.next = cur2.next;
                 cur2.next = cur;
                 pre.next = cur2;
                 pre = cur;
+                cur = cur.next;
             }
-            else
+            else{
+                pre.next = cur;
                 break;
+            }
         }
         
         return helper.next;
