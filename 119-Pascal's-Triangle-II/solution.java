@@ -9,7 +9,7 @@ public class Solution {
                 if(j > list.size())
                     list.add(list.get(j-1));
                 else
-                    list.set(j, list.get(j) + list.get(j-1));
+                    list.set(j-1, list.get(j) + list.get(j-1));
             }
         }
         
