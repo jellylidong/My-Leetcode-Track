@@ -21,6 +21,10 @@ public class Solution {
                 cur = cur.next;
             pre.next = cur;
             pre = cur;
+            if(cur == null)
+                break;
+            else
+                cur = cur.next;
         }
         
         return helper.next;
