@@ -17,3 +17,9 @@ public class Solution {
         
     }
 }
+
+/*
+assume before painting next post, we alreay have x ways
+if we will paint difference color, there are x*(k-1) ways
+if we will paint a same color, there are x ways
+*/
