@@ -10,12 +10,13 @@ public class Solution extends Reader4 {
     public int read(char[] buf, int n) {
         char[] smallBuf = new char[4];
         int ans = 0;
-        while(ans < n){
-            int count = read4(smallBuf);
+        int count = Integer.MAX_VALUE;
+        while(count >= 4 && ans < n){
+            count = read4(smallBuf);
             for(int i = 0; i < count; i++){
-                buf[count] = smallBuf[i];
+                buf[ans] = smallBuf[i];
                 ans++;
-                if(ans == n || count < 4)
+                if(ans == n)
                     return ans;
             }
            
