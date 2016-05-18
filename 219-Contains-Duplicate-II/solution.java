@@ -1,6 +1,6 @@
 public class Solution {
     public boolean containsNearbyDuplicate(int[] nums, int k) {
-        if(k <= 0)
+        if(k <= 0) // the diff is <= k, so k >= nums.length !=> false
             return false;
         HashSet<Integer> set = new HashSet<>();
         for(int i = 0; i < nums.length; i++){
