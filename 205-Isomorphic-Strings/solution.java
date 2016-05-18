@@ -13,7 +13,7 @@ public class Solution {
     
     public String encoding(String s){
         HashMap<Character, Integer> map = new HashMap<>();
-        String res = "";
+        StringBuilder res =  new StringBuilder();
         for(int i = 0; i < s.length(); i++){
             char c = s.charAt(i);
             if(map.containsKey(c)){
@@ -21,9 +21,9 @@ public class Solution {
             else{
                 map.put(c, i);
             }
-            res += map.get(c);
+            res.append(map.get(c));
         }
         
-        return res;
+        return res.toString();
     }
 }
