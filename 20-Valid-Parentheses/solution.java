@@ -6,9 +6,13 @@ public class Solution {
             if(c == '(' || c == '[' || c == '{')
                 stack.push(c);
             else{
-                if(stack.peek() != c)
+                if(stack.isEmpty())
                     return false;
-                stack.pop();
+                char cc = stack.peek();
+                if((cc == '(' && c == ')') || (cc == '[' && c == ']') || (cc == '{' && c == '}'))
+                    stack.pop();
+                else
+                    return false;
             }
         }
         
