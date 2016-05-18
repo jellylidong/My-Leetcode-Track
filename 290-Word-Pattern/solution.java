@@ -1,4 +1,5 @@
 public class Solution {
+    //hashmap.put(k, v) returns previous value, null if no previous value
     public boolean wordPattern(String pattern, String str) {
         String code1 = encoding(pattern);
         
