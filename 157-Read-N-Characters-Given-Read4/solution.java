@@ -16,7 +16,7 @@ public class Solution extends Reader4 {
             for(int i = 0; i < count; i++){
                 buf[ans] = smallBuf[i];
                 ans++;
-                if(ans == n)
+                if(ans == n)//early termination, once get the target length, return answer
                     return ans;
             }
            
