@@ -23,4 +23,13 @@ public class Solution {
         // System.out.println(l1*l2);
         return l1*l2;
     }
+    
+    /*explain
+    if two rectangle have overlap area
+    then this area is depend on two mid x and two mid y
+    ie sort all x and all y
+    the x[1],x[2] and y[1] and y[2] will be the number we use to compute area
+    note the above are area function can not judge if overlap exist
+    we need add an extra judge to avoid the wrong answer when there's no overlap
+    */
 }
