@@ -9,18 +9,22 @@ public class MinStack {
     }
     
     public void push(int x) {
+        
         min = Math.min(min, x);
         stack.push(x);
         stack.push(min);
     }
     
     public void pop() {
+        if(stack.isEmpty())
+            return;
         stack.pop();
         stack.pop();
-        min = stack.peek();
+        min = stack.isEmpty()? Integer.MAX_VALUE: stack.peek();
     }
     
     public int top() {
+        
         int tmp = stack.pop();
         int top = stack.peek();
         stack.push(tmp);
