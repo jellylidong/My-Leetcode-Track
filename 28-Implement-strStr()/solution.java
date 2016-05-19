@@ -7,7 +7,7 @@ public class Solution {
         if(haystack.equals(needle))
             return 0;
         
-        for(int i = 0; i <= haystack.length()-needle.length(); i++){
+        for(int i = 0; i <= haystack.length()-needle.length(); i++){ //pay attention to the index, should be <=
             int cur = i;
             // System.out.println(haystack.substring(cur, cur+needle.length()));
             if(haystack.substring(cur, cur+needle.length()).equals(needle))
@@ -17,3 +17,4 @@ public class Solution {
         return -1;
     }
 }
+
