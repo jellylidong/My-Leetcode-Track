@@ -3,9 +3,13 @@ public class Solution {
         String[] ss = new String[n];
         for(int i = 0; i < n; i++)
             ss[i] = "";
-        
+        int id = 0;
         for(int i = 0; i < s.length(); i++){
-            int id = i%(n+n-2);
+            int di = n+n-2;
+            if(id == 0)
+                id = i;
+            else
+                id = i%(n+n-2);
             if(id >= n){
                 id = n - id;
             }
