@@ -2,6 +2,8 @@ public class NumArray {
     int[] sum;
     public NumArray(int[] nums) {
         int len = nums.length;
+        if(len == 0)
+            return;
         sum = new int[len];
         sum[0] = nums[0];
         for(int i = 1; i < len; i++)
