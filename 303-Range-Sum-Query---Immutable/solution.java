@@ -1,17 +1,18 @@
 public class NumArray {
-    int[][] sum;
+    int[] sum;
     public NumArray(int[] nums) {
         int len = nums.length;
-        sum = new int[len][len];
-        for(int i = 0; i < len; i++){
-            for(int j = i; j < len; j++){
-                sum[i][j] = (i == j)? nums[i]: sum[i][j-1];
-            }
-        }
+        sum = new int[len];
+        sum[0] = nums[0];
+        for(int i = 1; i < len; i++)
+            sum[i] = sum[i-1] + nums[i];
     }
 
     public int sumRange(int i, int j) {
-        return sum[i][j];
+        if(i == 0)
+            return sum[j];
+        else
+            return sum[j] - sum[i-1];
     }
 }
 
