@@ -13,3 +13,6 @@ public class Solution {
         return x>0? (int)ans: -(int)ans;
     }
 }
+
+//pay attention to special numbers: reverse may overflow, 
+//abs may overflow, for this case, firt transform to long, than abs
