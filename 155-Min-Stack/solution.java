@@ -1,5 +1,8 @@
 public class MinStack {
 
+
+    //!!!!!!
+    //POOR performance
     /** initialize your data structure here. */
     Stack<Integer> stack;
     int min;
