@@ -6,7 +6,7 @@ public class Solution {
         for(int i = 0; i < 32; i++){
             ans *= 2;
             ans += num%2;
-            num = num >>> 1;;
+            num = num >>> 1;; // must do unsigned shift!!!!!
         }
         
         return (int)ans;
