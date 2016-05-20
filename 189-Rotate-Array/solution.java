@@ -8,10 +8,19 @@ public class Solution {
     }
     
     public void reverse(int[] nums, int lo, int hi){
-        for(int i = lo; i <= lo + (hi-lo)/2; i++){
-            int tmp = nums[i];
-            nums[i] = nums[hi-(i-lo)];
-            nums[hi-(i-lo)] = tmp;
+        // for(int i = lo; i <= lo + (hi-lo)/2; i++){
+        //     int tmp = nums[i];
+        //     nums[i] = nums[hi-(i-lo)];
+        //     nums[hi-(i-lo)] = tmp;
+        // }
+        
+        //this is better, can avoid error when length is 0
+        while(lo < hi){
+            int tmp = nums[lo];
+            nums[lo] = nums[hi];
+            nums[hi] = tmp;
+            lo++;
+            hi--;
         }
     }
 }
