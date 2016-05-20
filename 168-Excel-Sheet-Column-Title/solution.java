@@ -3,17 +3,20 @@ public class Solution {
         String ans = "";
         while(n != 0){
             int cur = n%26;
-            if(cur == 0)
-                ans += 'Z' + ans;
-            else
-                ans = (char)('A'-1+cur) + ans;
-            if(n > 26)
-                n /= 26;
-            else if(n == 26){
-                break;
+            if(cur == 0){
+                ans = 'Z' + ans;
+                n = n/26 - 1;
             }
+            else{
+                ans =(char)('A'-1+cur) + ans;
+                n = n/26;
+            }
+                
+            
         }
         
         return ans;
     }
 }
+
+//26, 567, 52
