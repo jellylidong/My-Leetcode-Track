@@ -5,14 +5,14 @@ public class Solution {
         for(int i = 0; i < k; i++){
             int tmp = nums[i];
             nums[i] = nums[n-1-i];
-            nums[n-i] = tmp;
+            nums[n-1-i] = tmp;
         }
         
         //reverse last n-k numbers
         for(int i = k; k < k + (n-k)/2; k++){
             int tmp = nums[i];
             nums[i] = nums[n-1-i];
-            nums[n-i] = tmp;
+            nums[n-1-i] = tmp;
         }
     }
 }
