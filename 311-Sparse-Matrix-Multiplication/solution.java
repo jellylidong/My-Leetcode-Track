@@ -46,6 +46,8 @@ public class Solution {
     // }
     
     //method 2
+    // ans[i][k] += A[i][j] * B[j][k];
+    //where i is the ith row of A, j  is j the col of A, k is kth col of B
     public int[][] multiply(int[][] A, int[][] B) {
         int m = A.length;
         int l = B[0].length;
@@ -53,6 +55,7 @@ public class Solution {
         
         for(int i = 0; i < A.length; i++){
             for(int j = 0; j < A[i].length; j++){
+                //very import to save time
                 if(A[i][j] != 0){
                     for(int k = 0; k < B[0].length; k++){
                         ans[i][k] += A[i][j] * B[j][k];
