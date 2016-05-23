@@ -10,11 +10,11 @@ public class Solution {
         for(int i = 1; i < costs.length; i++){
             for(int j = 0; j < 3; j++){
                 int min = Integer.MAX_VALUE;
-                for(int k = 0; k < 3; j++){
+                for(int k = 0; k < 3; k++){
                     if(k != j)
-                        min = Math.min(costs[i-1][k], min);
+                        min = Math.min(ans[i-1][k], min);
                 }
-                ans[i][j] = min + ans[i-1][j];
+                ans[i][j] = min + costs[i][j];
             }
         }
         
