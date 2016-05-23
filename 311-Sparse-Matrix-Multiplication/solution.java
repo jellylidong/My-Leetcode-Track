@@ -20,7 +20,7 @@ public class Solution {
     }
     
     public int mult(int[][] A, int ra, int[][] B, int lb){
-        if(zA[ra] || zB[lb])
+        if(zA[ra] || zB[lb]) //to save time, if the whole row of A is 0 or the whole column is 0, skip it
             return 0;
     
         int countA = 0;
