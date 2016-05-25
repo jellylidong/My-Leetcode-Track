@@ -15,6 +15,8 @@ public class Solution {
     }
     
     public TreeNode build(int[] nums, int lo, int hi){
+        if(lo > hi)
+            return null;
         if(lo == hi)
             return new TreeNode(nums[lo]);
         int mid = lo + (hi-lo)/2;
