@@ -22,6 +22,10 @@ public class NumMatrix {
     }
 
     public int sumRegion(int row1, int col1, int row2, int col2) {
+        row1 = row1 >= sum.length? sum.length-1: row1;
+        row2 = row2 >= sum.length? sum.length-1: row2;
+        col1 = col1 >= sum[0].length? sum[0].length-1: col1;
+        col2 = col2 >= sum[0].length? sum[0].length-1: col2;
         int p1 = row1-1 >= 0? sum[row1-1][col2]:0;
         int p2 = col1-1 >= 0? sum[row2][col1-1]:0;
         int p3 = (row1-1 >= 0 && col1-1 >= 0)? sum[row1-1][col1-1]:0;
