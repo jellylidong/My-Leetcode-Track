@@ -17,7 +17,7 @@ public class NumMatrix {
             
         for(int i = 1; i < h; i++){
             for(int j = 1; j < w; j++)
-                sum[i][j] = sum[i-1][j] + sum[i][j-1] - sum[i-1][j-1];
+                sum[i][j] = sum[i-1][j] + sum[i][j-1] - sum[i-1][j-1] + m[i][j];
         }
     }
 
