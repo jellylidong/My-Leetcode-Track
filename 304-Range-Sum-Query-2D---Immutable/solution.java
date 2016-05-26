@@ -3,8 +3,11 @@ public class NumMatrix {
     int[][] sum;
     public NumMatrix(int[][] m) {
         int h = m.length;
+        if(h == 0)
+            return;
         int w = m[0].length;
-        
+        if(w == 0)
+            return;
         sum = new int[h][w];
         sum[0][0] = m[0][0];
         for(int i = 1; i < w; i++)
