@@ -32,7 +32,7 @@ public class Solution {
         }
         
         //rob(root.left) + rob(root.right) is the value for when current root is not robbed
-        int max = Math.max(root.val + val, rob(root.left) + rob(root.right));
+        int max = Math.max(root.val + val, rob(root.left, map) + rob(root.right, map));
         map.put(root, max);
         return max;
         
