@@ -20,6 +20,10 @@ public class Solution {
     
     public boolean verifyPreorder(int[] pre) {
         int parent = Integer.MIN_VALUE;
+        //the parent value is the value of node p that closes to current node n, 
+        //where p is the parent node of n and n is in p's left subtree
+        
+        
         Stack<Integer> stk = new Stack<>();
         
         for(int n: pre){
