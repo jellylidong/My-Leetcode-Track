@@ -10,28 +10,31 @@
 public class Solution {
 
     public int rob(TreeNode root) {
-        if(root == null)
-            return 0;
-        return Math.max(rob(root, false), root.val + rob(root, true));
+        HashMap<TreeNode, Integer> map = new HashMap<>();
+        return rob(root, map);
        
     }
     
-    public int rob(TreeNode root, boolean robbedPre){
+    public int rob(TreeNode root, HashMap<TreeNode, Integer> map){
         if(root == null)
             return 0;
-        int left = 0;
-        int right = 0;
+        if(map.containsKey(root))
+            return map.get(root);
+            
+        int val = 0; 
+        //the val for when current root is robbed
+        //if current root is robbed, we can only start from root.left.children and root,right.children
+        if(root.left != null){
+            val += rob(root.left.left, map) + rob(root.left.right);
+        }
+        if(root.right != null){
+            val += rob(root.right.left, map) + rob(root.right.right, map);
+        }
         
-        if(robbedPre){
-            left = 0 + rob(root.left, false);
-            right = 0 + rob(root.right, false);
-            return left + right;
-        }
-        else{
-            left =  Math.max(rob(root.left, true) + (root.left == null? 0:root.left.val), rob(root.left, false));
-            right = Math.max(rob(root.right, true) + (root.right == null? 0:root.right.val), rob(root.right, false));
-            return left + right;
-        }
+        //rob(root.left) + rob(root.right) is the value for when current root is not robbed
+        int max = Math.max(root.val + val, rob(root.left) + rob(root.right));
+        map.put(root, max);
+        return max;
         
     }
 }
