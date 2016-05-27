@@ -6,8 +6,8 @@ public class Solution {
             if(pre[i] < parent)
                 return false;
             while(parentid >= 0 && pre[i] > pre[parentid]){
-                parentid--;
-                parent = pre[parentid];
+                // parentid--;
+                parent = pre[parentid--];
             }
             pre[++parentid] = pre[i];
         }
