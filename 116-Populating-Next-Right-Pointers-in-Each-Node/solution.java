@@ -8,6 +8,8 @@
  */
 public class Solution {
     public void connect(TreeLinkNode root) {
+        if(root == null)
+            return;
         Queue<TreeLinkNode> q = new LinkedList<>();
         q.offer(root);
         
