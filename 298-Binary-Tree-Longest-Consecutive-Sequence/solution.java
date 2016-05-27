@@ -10,7 +10,8 @@
 public class Solution {
     int max = 0;
     public int longestConsecutive(TreeNode root) {
-        
+        if(root == null)
+            return max;
         dfs(root, 0);
         return max;
         
