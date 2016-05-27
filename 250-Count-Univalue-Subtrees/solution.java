@@ -46,10 +46,23 @@ public class Solution {
            
     //     return new pair(false, root.val);
     // }
+    
+    
+    
+    //!!!!!!!!!!!11
+    //note the difference between || and |
+    // "||" is logic operator, it will shor circuit if there's already a true value
+    // "|" is bitwise operator, it won't short circuit, it will compute all values around it
+    
+    //the above code also work well
     int ans;
     public int countUnivalSubtrees(TreeNode root) {
+        if(root == null)
+            return 0;
         ans = 0;
-        count(root, root.val);
+        count(root, 0);
+        // System.out.println(false|false);
+        // System.out.println(true||false);
         return ans;
     }
     
@@ -57,7 +70,11 @@ public class Solution {
         if(root == null)
             return true;
             
-        if(!count(root.left, root.val) || !count(root.right, root.val))
+        //node not ||, should be |    
+        boolean res1 = (!count(root.left, root.val)) | (!count(root.right, root.val));
+        // boolean res2 = (!count(root.left, root.val)) |(!count(root.right, root.val));
+        // System.out.println(res1 + " " + res2);
+        if(res1)
             return false;
         ans++;
         return root.val == val;
