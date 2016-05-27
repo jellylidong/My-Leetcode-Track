@@ -25,7 +25,7 @@ public class Solution {
         //the val for when current root is robbed
         //if current root is robbed, we can only start from root.left.children and root,right.children
         if(root.left != null){
-            val += rob(root.left.left, map) + rob(root.left.right);
+            val += rob(root.left.left, map) + rob(root.left.right, map);
         }
         if(root.right != null){
             val += rob(root.right.left, map) + rob(root.right.right, map);
