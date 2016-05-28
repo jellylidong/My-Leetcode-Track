@@ -1,6 +1,7 @@
 public class Solution {
+    //split the string by operator and evaluate the substrings
     public List<Integer> diffWaysToCompute(String input) {
-        // HashSet<Integer> ans = new HashSet<>();
+        // HashSet<Integer> ans = new HashSet<>();
         List<Integer> ans = new ArrayList<>();
     
         for(int i = 0; i < input.length(); i++){
