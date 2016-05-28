@@ -24,6 +24,7 @@ public class Solution {
             }
         }
         
+        //no need to do this, the line 12 code already solve the case when there's only one number left
         // if(ans.size() == 0 && start != n){
         //     List<Integer> newList = new ArrayList<>();
         //     newList.add(n);
