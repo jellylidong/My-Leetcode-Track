@@ -10,20 +10,24 @@ public class Solution {
         int count = 1;
         while(count <= n*n){
             //go right
+            // System.out.println(left + " " + right + " " + up + " " + down);
             for(int i = left; count <= n*n && i <= right; i++)
                 ans[up][i] = count++;
             up++; //1
             
             //go down
+            // System.out.println(left + " " + right + " " + up + " " + down);
             for(int i = up; count <= n*n && i <= down; i++)
                 ans[i][right] = count++;
             right--; 
             
             //go left
+            // System.out.println(left + " " + right + " " + up + " " + down);
             for(int i = right; count <= n*n && i >= left; i--)
                 ans[down][i] = count++;
-            down++;
+            down--;
             
+            // System.out.println(left + " " + right + " " + up + " " + down);
             for(int i = down; count <= n*n && i <= up; i--)
                 ans[i][left] = count++;
             left++;
