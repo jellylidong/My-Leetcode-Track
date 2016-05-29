@@ -1,30 +1,25 @@
 public class Solution {
-    public List<List<Integer>> combine(int n, int k) {
-        return combine(n, k, 1);
-    }
-    
-    public List<List<Integer>> combine(int n, int k, int start) {
-        List<List<Integer>> ans = new ArrayList<>();
-        if(k == 0 || start > n)
-            return ans;
-            
-        for(int i = start; i <= n; i++){
-            for(int j = i+1; j <= n; j++){
-                List<List<Integer>> subAns = combine(n, k-1, j);
-                for(List<Integer> list: subAns){
-                    List<Integer> newList = new ArrayList<>();
-                    newList.add(i);
-                    newList.addAll(list);
-                    ans.add(newList);
-                }
-            }
-        }
-        if(ans.size() == 0){
-            List<Integer> list = new ArrayList<>();
-            list.add(start);
-            ans.add(list);
-        }
-        
+   List<List<Integer>> ans;
+   public List<List<Integer>> combine(int n, int k) {
+        ans = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
+        gen(list, 1, n, k);
         return ans;
     }
+    
+    
+    public void gen(List<Integer> list, int start, int n, int k){
+        if(list.size() == k){
+            ans.add(new ArrayList<Integer>(list));
+        }
+        else{
+            for(int i = start; i <= n; i++){
+                list.add(i);
+                gen(list, i+1, n, k);
+                list.remove(list.size()-1);
+            }
+        }
+    }
+    
+    
 }
