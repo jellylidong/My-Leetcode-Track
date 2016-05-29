@@ -1,12 +1,19 @@
 public class Solution {
     public int maxArea(int[] h) {
-        int ans = 0;
-        for(int i = 0; i < h.length; i++){
-            for(int j = i+1; j < h.length; j++){
-                ans = Math.max(ans, (j-i)*Math.min(h[i], h[j]));
-            }
-        }
+        int left = 0;
+        int right = h.length-1;
         
-        return ans;
+        int max = 0;
+        while(left < right){
+            max = Math.max(max, (right-left) * Math.min(h[left], h[right]));
+            
+            //if h[left] < h[right], the min height will always be h[left], so left++
+            //if h[left] >= h[right], the min heigh will aleays be h[right], so right--
+            if(h[left] < h[right])
+                left++;
+            else
+                right--;
+        }
+        return max;
     }
 }
