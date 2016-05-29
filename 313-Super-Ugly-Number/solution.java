@@ -1,4 +1,6 @@
 public class Solution {
+    //if you can don this,
+    //Ugly Number II  can be ignored
     public int nthSuperUglyNumber(int n, int[] primes) {
         int[] ugly = new int[n];
         int[] id = new int[primes.length];
