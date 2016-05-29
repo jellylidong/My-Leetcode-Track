@@ -52,6 +52,7 @@ public class Solution extends Relation {
         //check if ans is a real celebrity
         for(int i = 0; i < n; i++){
             if(i != ans){
+                //if candidate knows sb or sb don't know candidate, then it's note a real candidate
                 if(knows(ans, i) || !knows(i, ans))
                     return -1;
             }
