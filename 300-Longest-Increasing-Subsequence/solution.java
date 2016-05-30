@@ -40,10 +40,14 @@ public class Solution {
         int[] dp = new int[len];
         len = 0;
         for(int n: nums){
+            //serch the insert position in dp for each number of nums, 
             int i = Arrays.binarySearch(dp, 0, len, n);
             if(i < 0)
                 i = -(i+1);
+            //insert current number to dp
             dp[i] = n;
+            
+            //update len when current number is inserted into the tail of dp
             if(i == len)
                 len++;
         }
