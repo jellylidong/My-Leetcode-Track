@@ -1,4 +1,8 @@
 public class Solution {
+    
+    //pay attention to the O(n) time complexity method
+    //it uses quick sort
+    
     public int findKthLargest(int[] nums, int k) {
         PriorityQueue<Integer> pq = new PriorityQueue<>(k);
         int len = nums.length;
