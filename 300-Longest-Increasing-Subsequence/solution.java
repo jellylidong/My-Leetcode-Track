@@ -38,6 +38,7 @@ public class Solution {
         if(len == 0)
             return 0;
         int[] dp = new int[len];
+        len = 0;
         for(int n: nums){
             int i = Arrays.binarySearch(dp, 0, len, n);
             if(i < 0)
