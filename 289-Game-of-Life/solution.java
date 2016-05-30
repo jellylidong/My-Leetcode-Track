@@ -14,10 +14,12 @@ public class Solution {
                 if((board[i][j]&1) == 1){
                     if(lives > 3 || lives < 2)
                         board[i][j] |= 0;
+                    else
+                        board[i][j] |= 2;
                 }
                 //current state is dead
                 else{
-                    if(lives >= 3)
+                    if(lives == 3)
                         board[i][j] |= 2;
                 }
             }
@@ -33,11 +35,15 @@ public class Solution {
     public int lives(int[][] board, int i0, int j0){
         int lives = 0;
         for(int i = Math.max(0, i0-1); i <= Math.min(board.length-1, i0+1); i++){
-            for(int j = Math.min(0, j0-1); j <= Math.min(board[0].length-1, j0+1); j++){
+            for(int j = Math.max(0, j0-1); j <= Math.min(board[0].length-1, j0+1); j++){
                 if((board[i][j]&1) == 1)
                     lives++;
             }
         }
+        
+        //Don't forget to reduce itself
+        if((board[i0][j0]&1) == 1)
+            lives--;
         
         return lives;
     }
