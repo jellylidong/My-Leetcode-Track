@@ -1,26 +1,33 @@
 public class Vector2D implements Iterator<Integer> {
-    List<Integer> list;
-    int count = 0;
+    List<List<Integer>> list;
+    int x;
+    int y;
     public Vector2D(List<List<Integer>> vec2d) {
-        list = new ArrayList<>();
-        for(List<Integer> curList: vec2d){
-            for(Integer n: curList){
-                list.add(n);
-            }
-        }
+        list = vec2d;
+        x = 0;
+        y = 0;
     }
 
     @Override
     public Integer next() {
         if(!hasNext())
             return null;
-        else
-            return list.get(count++);
+        else{
+            
+            int res = list.get(x).get(y);
+            y++;
+            
+            return res;
+        }
     }
 
     @Override
     public boolean hasNext() {
-        return count < list.size();
+        while(x < list.size() && y == list.get(x).size()){
+                x++;
+                y = 0;
+            }
+        return x < list.size() && y < list.get(x).size();
     }
 }
 
