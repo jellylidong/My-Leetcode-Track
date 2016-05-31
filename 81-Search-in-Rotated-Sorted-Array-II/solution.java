@@ -11,9 +11,9 @@ public class Solution {
             //pass by all the dup at hi
             if(nums[mid] < nums[hi]){
                 if(nums[mid] < target && target <= nums[hi])
-                    hi = mid;
+                    lo = mid + 1;
                 else
-                    lo = mid+1;
+                    hi = mid;
             }
             else if(nums[mid] == nums[hi]){
                 hi--;
