@@ -5,6 +5,8 @@ public class Solution {
         
         while(lo < hi){
             int mid = lo + (hi-lo)/2;
+            if(nums[mid] == target)
+                return mid;
             if(nums[mid] < nums[hi]){
                 if(nums[mid] <= target && target <= nums[hi])
                     lo = mid;
