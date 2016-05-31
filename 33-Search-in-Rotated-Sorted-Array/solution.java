@@ -1,4 +1,11 @@
 public class Solution {
+    
+    //!!!!!!!!!!!!
+    /*
+    tips for binary search
+    always keep the nums[mid] == target condition so that avoid dead loop and early termination
+    also, when change bound, always use mid+1 or mid-1 so that avoid dead loop
+    */
     public int search(int[] nums, int target) {
         int lo = 0;
         int hi = nums.length-1;
