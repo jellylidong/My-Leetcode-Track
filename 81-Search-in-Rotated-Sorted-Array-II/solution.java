@@ -22,7 +22,7 @@ public class Solution {
                 if(nums[lo] <= target && target < nums[mid])
                     hi = mid;
                 else
-                    lo = mid-1;
+                    lo = mid+1;
             }
             
         }
