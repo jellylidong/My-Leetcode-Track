@@ -8,14 +8,14 @@ public class Solution {
             if(nums[mid] == target)
                 return mid;
             if(nums[mid] < nums[hi]){
-                if(nums[mid] <= target && target <= nums[hi])
-                    lo = mid;
+                if(nums[mid] < target && target <= nums[hi])
+                    lo = mid+1;
                 else
                     hi = mid-1;
             }
             else{
-                if(nums[lo] <= target && target <= nums[mid])
-                    hi = mid;
+                if(nums[lo] <= target && target < nums[mid])
+                    hi = mid-1;
                 else
                     lo = mid+1;
             }
