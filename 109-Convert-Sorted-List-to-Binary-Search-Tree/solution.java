@@ -15,6 +15,14 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
+ 
+ 
+/*
+!!!!!!!!!!!!
+this problem is also a DFS with a global variable, 
+the thought is similar to 114. Flatten Binary Tree to Linked List
+change the global variable while dfs
+*/
 public class Solution {
     ListNode node;
     public TreeNode sortedListToBST(ListNode head) {
