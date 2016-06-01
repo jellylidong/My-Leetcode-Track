@@ -1,18 +1,22 @@
 public class Solution {
     public boolean wordBreak(String s, Set<String> dict) {
-    
+        int len = s.length();
+        boolean[] res = new boolean[len+1];
+        //res[i] is true if s.substring(0, i) is breakable
+        res[0] = true;
         
-        for(int i = 0; i <= s.length(); i++){
-            // System.out.println(s.substring(0, i));
-            if(dict.contains(s.substring(0, i))){
-                if(i == s.length())
-                    return true;
-                boolean cur = wordBreak(s.substring(i), dict);
-                if(cur)
-                    return true;
+        for(int i = 1; i <= s.length(); i++){
+            for(int j = 0; j < i; j++){
+                res[i] = res[j] && dict.contains(s.substring(j, i));
+                if(res[i])
+                    break;
             }
         }
         
-        return false;
+        return res[len];
+        
+        
     }
+    
+    
 }
