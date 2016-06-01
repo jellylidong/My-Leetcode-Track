@@ -3,7 +3,7 @@ public class Solution {
     
         
         for(int i = 0; i <= s.length(); i++){
-            System.out.println(s.substring(0, i));
+            // System.out.println(s.substring(0, i));
             if(dict.contains(s.substring(0, i))){
                 if(i == s.length())
                     return true;
