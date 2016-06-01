@@ -10,9 +10,9 @@ public class Solution {
     public ListNode partition(ListNode head, int x) {
         if(head == null)
             return null;
-        ListNode h1 = new ListNode(0); // >
-        ListNode h2 = new ListNode(0); // =
-        ListNode h3 = new ListNode(0); // <
+        ListNode h1 = new ListNode(0); // > x
+        ListNode h2 = new ListNode(0); // = x
+        ListNode h3 = new ListNode(0); // < x
         
         ListNode cur1 = h1;
         ListNode cur2 = h2;
@@ -20,18 +20,15 @@ public class Solution {
         ListNode cur = head;
         
         while(cur != null){
-            if(x > cur.val){
-                h1.next = cur;
-                cur1 = cur1.next;
-            }
-            else if(x == cur.val){
-                h2.next = cur;
-                cur2 = cur2.next;
-            }
-            else{
-                h3.next = cur;
+            if(cur.val < x){
+                cur3.next = cur;
                 cur3 = cur3.next;
             }
+            else{
+                cur2.next = cur;
+                cur2 = cur2.next;
+            }
+            
             cur = cur.next;
         }
         
@@ -39,6 +36,7 @@ public class Solution {
         cur2.next = h1.next;
         cur1.next = null;
         
-        return h3.next;
+        //in case there's no smaller, equal or bigger part
+        return h3.next != null? h3.next: (h2.next != null)? h2.next: h1.next;
     }
 }
