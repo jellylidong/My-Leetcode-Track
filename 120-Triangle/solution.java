@@ -12,8 +12,8 @@ public class Solution {
             return;
         }
             
-        if(pp - 1 >= 0)
-            minSum(tri, level+1, pp-1, sum + tri.get(level).get(pp-1));
+        // if(pp - 1 >= 0)
+        //     minSum(tri, level+1, pp-1, sum + tri.get(level).get(pp-1));
         minSum(tri, level+1, pp, sum + tri.get(level).get(pp));
         if(pp+1 < tri.get(level).size())
             minSum(tri, level+1, pp+1, sum + tri.get(level).get(pp+1));
