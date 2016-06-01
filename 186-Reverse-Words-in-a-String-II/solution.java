@@ -8,8 +8,8 @@ public class Solution {
         while(i < s.length){
             while(j < s.length && s[j] != ' ')
                 j++;
-            if(j != s.length)
-                j--;
+            
+            j--;
                 
             reverse(s, i, j);
             j += 2;
