@@ -23,6 +23,9 @@ public class Solution {
         
         ListNode next = null;
         ListNode pre = null;
+        
+        //note: to reverse a linkedlist with length Len
+        //we must rever Len times, Not len-1 times
         for(int i = m; i <= n; i++){
             next = cur.next;
             cur.next = pre;
