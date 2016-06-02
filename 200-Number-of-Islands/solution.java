@@ -1,4 +1,8 @@
 public class Solution {
+    
+    //when you redo it, try to use union find, it's much better
+    //https://leetcode.com/discuss/79537/java-union-find-solution
+    
     int count;
     public int numIslands(char[][] grid) {
         int m = grid.length;
