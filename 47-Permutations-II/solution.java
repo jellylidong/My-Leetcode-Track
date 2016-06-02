@@ -1,4 +1,8 @@
 public class Solution {
+    //the idea is to generate next permutation and add it to ans
+    //originally, we use a hashSet to check if we already has the same permutation when there are dups
+    //this is time and space expensive, don't do it!!!!
+    
     public List<List<Integer>> permuteUnique(int[] nums) {
         Arrays.sort(nums);
         List<List<Integer>> ans = new ArrayList<>();
