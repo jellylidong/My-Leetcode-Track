@@ -9,8 +9,21 @@ public class Solution {
     
     public void combinationSum2(int[] nums, int start, int target, List<List<Integer>> ans, List<Integer> list) {
         
-        if(target == 0)
+        //!!!!!!!!!
+        //The early termination must be added, otherwise TLE
+        
+        //since the numbers are sorted, so if we alreay get target == 0
+        //it's not possible that adding more numbers can make another results
+        //so return;
+        if(target == 0){
             ans.add(new ArrayList<>(list));
+            return;
+        }
+        
+        //since the numbers are sorted, once it's < 0, target-nums[i] can only makes it smaller
+        //so return
+        if(target < 0)
+            return;
             
         for(int i = start; i < nums.length; i++){
             //to avoid generate duplicate reulst, we don't add same number in the same dfs level
