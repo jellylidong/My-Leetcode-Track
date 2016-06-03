@@ -25,6 +25,7 @@ public class Solution {
         if(target < 0)
             return;
             
+        //don't use list.contains to check dups, it's very expensive
         for(int i = start; i < nums.length; i++){
             //to avoid generate duplicate reulst, we don't add same number in the same dfs level
             if(i > start && nums[i] == nums[i-1])
