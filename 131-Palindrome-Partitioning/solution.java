@@ -23,8 +23,8 @@ public class Solution {
     }
     
     public boolean isP(String s){
-        if(s.length() == 0)
-            return false;
+        // if(s.length() == 0)
+        //     return false;
         int lo = 0;
         int hi = s.length()-1;
         char[] cs = s.toCharArray();
