@@ -27,9 +27,6 @@ public class Solution {
             
         visited.add(node);
         for(UndirectedGraphNode n: node.neighbors){
-            if(node == n)
-                cur.neighbors.add(map.get(n));
-            else{
             
                 if(map.containsKey(n))
                     cur.neighbors.add(map.get(n));
@@ -41,7 +38,6 @@ public class Solution {
                 if(!visited.contains(n))
                     cloneGraph(n);
             
-            }
         }
         
         return cur;
