@@ -36,12 +36,18 @@ public class Solution {
         RandomListNode pre = helper;
         cur = head;
         while(cur != null){
-            pre.next = cur.next.next;
+            RandomListNode next = cur.next.next;
+            pre.next = cur.next;
             pre = pre.next;
-            cur = pre.next;
+            
+            //recover the original list
+            cur.next = next;
+            cur = cur.next;
         }
         
         return helper.next;
         
     }
+    
+    //{-1,#}
 }
