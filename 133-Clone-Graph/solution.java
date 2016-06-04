@@ -10,6 +10,8 @@ public class Solution {
     HashMap<UndirectedGraphNode, UndirectedGraphNode> map = new HashMap<>();
     HashSet<UndirectedGraphNode> visited = new HashSet<>();
     public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
+        if(node == null)
+            return null;
         UndirectedGraphNode cur;
         if(!map.containsKey(node)){
              cur = new UndirectedGraphNode(node.label);
