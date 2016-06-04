@@ -9,11 +9,11 @@ public class Solution {
             sum += nums[i];
             while(sum >= s && j <= i){
                 sum -= nums[j++];
-                // len = Math.min(len, i-j+1+1);
+                len = Math.min(len, i-j+1+1);
             }
             
             
-            System.out.println(i + " " + j);
+            // System.out.println(i + " " + j);
         }
         
         return len == Integer.MAX_VALUE?  0: len;
