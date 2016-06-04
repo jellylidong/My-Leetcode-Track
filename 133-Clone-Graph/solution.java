@@ -53,6 +53,7 @@ public class Solution {
             return map.get(node);
             
         UndirectedGraphNode cur = new UndirectedGraphNode(node.label);
+        map.put(node, cur);
         for(UndirectedGraphNode n: node.neighbors){
             cur.neighbors.add(cloneGraph(n));
         }
