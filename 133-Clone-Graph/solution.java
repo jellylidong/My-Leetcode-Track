@@ -31,7 +31,7 @@ public class Solution {
                 cloneGraph(n);
             }
         }
-        visited.add(cur);
+        visited.add(node);
         return cur;
     }
 }
