@@ -3,20 +3,19 @@ public class Solution {
         int ans = 0;
         int count = 0;
         
-        HashMap<Character, Integer> cs = new HashMap<>();
+        HashSet<Character> cs = new HashSet<>();
         
         for(int i = 0; i < s.length(); i++){
             char c = s.charAt(i);
-            if(!cs.containsKey(c))
-                cs.put(c, 0);
-            if(cs.get(c)== 0){
+            
+            if(!cs.contains(c)){
                 count++;
-                cs.put(c, 1);
+                cs.add(c);
                 ans = Math.max(ans, count);
             }
             else{
                 for(int j = i-count; j < i && s.charAt(j) != c; j++){
-                    cs.put(s.charAt(j), 0);
+                    cs.remove(s.charAt(j));
                     count--;
                 }
             }
