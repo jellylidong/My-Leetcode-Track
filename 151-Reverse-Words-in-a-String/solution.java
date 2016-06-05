@@ -1,5 +1,8 @@
 public class Solution {
     public String reverseWords(String s) {
+        //must trim the head and tail space
+        //why??????
+        
         String[] ss = s.trim().split("\\s+"); // regx of >= 1 spaces
         StringBuilder sb = new StringBuilder();
         if(ss.length > 0){
