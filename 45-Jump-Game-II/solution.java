@@ -1,3 +1,7 @@
+//!!!!!!!!!!!1
+//understand in BFS way
+//each step is a bfs level
+
 public class Solution {
     public int jump(int[] nums) {
         if(nums.length < 2)
