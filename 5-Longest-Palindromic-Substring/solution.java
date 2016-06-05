@@ -1,4 +1,6 @@
 public class Solution {
+    
+    //try best to use as few s.substring as possible
     public String longestPalindrome(String s) {
         int max = 0;
         String ans = "";
