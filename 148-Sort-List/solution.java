@@ -6,6 +6,8 @@
  *     ListNode(int x) { val = x; }
  * }
  */
+ 
+ //split list int two part and merge sort the two sublist recursively
 public class Solution {
     public ListNode sortList(ListNode head) {
         if(head == null)
