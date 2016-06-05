@@ -20,6 +20,8 @@ public class Solution {
         }
         
         k = k%len;
+        //if k == 0, it means no need to reverse
+        //when it's possible to early terminate, consider if not early terminating will cause error
         if(k == 0)
             return head;
         ListNode pre = head;
