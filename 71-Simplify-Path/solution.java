@@ -18,9 +18,12 @@ public class Solution {
         
         String ans = "";
         while(!stk.isEmpty()){
-            ans = stk.pop() + "/";
+            ans = stk.pop() + "/" + ans;
         }
         
-        return "/" + ans.substring(0, ans.length()-1);
+        ans = "/" + ans;
+        return ans.length() == 1? ans: ans.substring(0, ans.length()-1);
     }
+    
+    // "/..."
 }
