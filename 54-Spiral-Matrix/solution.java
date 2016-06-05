@@ -20,7 +20,7 @@ public class Solution {
                 count++;
             }
             up++;
-            if(count >= h*n)    break;
+            // if(count >= h*n)    break;
             
             //go down
             for(int i = up; count < h*n && i <= down; i++){
@@ -28,7 +28,7 @@ public class Solution {
                 count++;
             }
             right--;
-            if(count >= h*n)    break;
+            // if(count >= h*n)    break;
             
             //go left
             for(int i = right; count < h*n && i >= left; i--){
@@ -36,7 +36,7 @@ public class Solution {
                 count++;
             }
             down--;
-            if(count >= h*n)    break;
+            // if(count >= h*n)    break;
             
             //go up
             for(int i = down; count < h*n && i >= up; i--){
@@ -44,7 +44,7 @@ public class Solution {
                 count++;
             }
             left++;
-            if(count >= h*n)    break;
+            // if(count >= h*n)    break;
         }
         
         return ans;
