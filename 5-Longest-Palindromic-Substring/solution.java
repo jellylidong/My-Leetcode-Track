@@ -7,8 +7,8 @@ public class Solution {
         int hi = 0;
         
         for(int i = 0; i < s.length(); i++){
-            int n1 = search(s.substring(0, i), s.substring(i+1)) + 1;
-            int n2 = search(s.substring(0, i+1), s.substring(i+1));
+            int n1 = search(s, i, i);
+            int n2 = search(s, i, i+1);
             if(n1 > n2 && n1 > max){
                 max = n1;
                 int half = (n1-1)/2;
@@ -28,13 +28,11 @@ public class Solution {
         return s.substring(lo, hi);
     }
     
-    public int search(String s1, String s2){
-        int i1 = s1.length()-1;
-        int i2 = 0;
-    
-        int count = 0;
-        while(i1 >= 0 && i2 < s2.length()){
-            if(s1.charAt(i1) == s2.charAt(i2)){
+    public int search(String s, int i1, int i2){
+        int count = (i1 == i2)? -1: 0;
+        
+        while(i1 >= 0 && i2 < s.length()){
+            if(s.charAt(i1) == s.charAt(i2)){
                 count += 2;
                 i1--;
                 i2++;
