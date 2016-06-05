@@ -35,7 +35,7 @@ public class Solution {
                 ans.add(m[down][i]);
                 count++;
             }
-            down++;
+            down--;
             if(count >= h*n)    break;
             
             //go up
