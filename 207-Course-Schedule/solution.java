@@ -22,11 +22,11 @@ public class Solution {
         if(visited[n])
             return false;
         visited[n] = true;
-        for(int i = 0; i < graph[i].size(); i++){
+        for(int i = 0; i < graph[n].size(); i++){
             if(!dfs(graph, visited, (int)graph[n].get(i)))
                 return false;
         }
-        visited[n] = true;
+        visited[n] = false;
         return true;
     }
 }
