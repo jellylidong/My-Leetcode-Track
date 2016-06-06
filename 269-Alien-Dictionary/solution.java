@@ -49,6 +49,10 @@ public class Solution {
         if(visited.get(c))
             return false;
             
+        //this early termination is needed
+        //otherwise, TLE
+        if(alreadyAdded.contains(c))
+            return true;
         // if(graph.get(c).size() == 0){
         //     if(!alreadyAdded.contains(c)){
         //         alreadyAdded.add(c);
@@ -62,10 +66,10 @@ public class Solution {
                 if(!dfs(cur, graph, visited, alreadyAdded, sb))
                     return false;
             }
-            if(!alreadyAdded.contains(c)){
-                alreadyAdded.add(c);
-                sb.append(c);
-            }
+            
+            alreadyAdded.add(c);
+            sb.append(c);
+            
             visited.put(c, false);
         }
         return true;   
