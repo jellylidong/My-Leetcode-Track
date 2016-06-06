@@ -83,6 +83,7 @@ public class Solution {
         //     return;
         if(mem[i][j] != 0)
             return;
+            
         int len = 1;
         if(i-1 >= 0 && nums[i-1][j] > nums[i][j]){
             dfs(nums, mem, i-1, j);
