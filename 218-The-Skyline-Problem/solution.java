@@ -36,9 +36,9 @@ public class Solution {
         while(i1 < l1.size() && i2 < l2.size()){
             int x = 0;
             int h = 0; //current max height
-            
+            //go throgh all pairs in two lisit inorder of x
             //keep updating h1 and h2 when corresponding position comes
-            //when max height change, add current (x, h) to res
+            //when max height changed, add current (x, h) to res
             if(l1.get(i1)[0] < l2.get(i2)[0]){
                 x = l1.get(i1)[0];
                 h1 = l1.get(i1)[1];
