@@ -25,7 +25,8 @@ public class Solution {
         int count = 0;
         
         //first declare some rules
-        //if currenct value n > root.val, we should go right and count should add root.count 
+        //if currenct value n > root.val, we should go right, count should add root.count,
+        //!!!!!!!!!!!! besides, if root.val != n, we should also add 1 to count
         //if current value = n, we can go both, but here, we go to right
         //if current value < n, we go to left, count should not change, root.count should plus 1 because there will be a node added to left
         
