@@ -45,7 +45,7 @@ public class Solution {
             }
             else if(l1.get(i1)[0] > l2.get(i2)[0]){
                 x = l2.get(i2)[0];
-                h2 = l1.get(i2)[1];
+                h2 = l2.get(i2)[1];
                 h = Math.max(h1, h2);
                 i2++;
             }
@@ -59,7 +59,7 @@ public class Solution {
             }
             
             if(preMax != h){
-                ans.add(new int[] {x, h});
+                ans.add(new int[] {x, h}); // add only when maxheigh change, no matter bigger or smaller
                 preMax = h;
             }
         }
