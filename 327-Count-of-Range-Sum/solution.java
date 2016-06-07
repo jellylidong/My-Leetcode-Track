@@ -21,7 +21,7 @@ public class Solution {
         }
         
         int mid = lo + (hi-lo)/2;
-        int count = 0;
+        int count = 0; //count shuold be local variable, not global variable
         count += search(sums, lo, mid, lower, upper) + search(sums, mid+1, hi, lower, upper);
         
         int loId = mid+1; 
