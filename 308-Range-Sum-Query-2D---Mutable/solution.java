@@ -4,6 +4,8 @@ public class NumMatrix {
     int[][] tree;
 
     public NumMatrix(int[][] nums) {
+        if(nums.length == 0 || nums[0].length == 0)
+            return;
         this.nums = nums;
         this.tree = new int[nums.length+1][nums[0].length+1];
         for(int i = 0; i < nums.length; i++){
