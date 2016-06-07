@@ -98,14 +98,14 @@ public class NumArray {
         this.nums = nums;
         this.tree = new int[nums.length+1];
         for(int i = 0; i < nums.length; i++){
-            for(int j = i+1; j < tree.length; j += j&(-j)){
+            for(int j = i+1; j < tree.length; j += j&(-j)){ // go right
                 tree[j] += nums[i];
             }
         }
     }
 
     void update(int i, int val) {
-        for(int j = i+1; j < tree.length; j += j&(-j)){
+        for(int j = i+1; j < tree.length; j += j&(-j)){ // go right
             tree[j] += val - nums[i];
         }
         nums[i] = val;
@@ -121,7 +121,7 @@ public class NumArray {
         if(i < 0)
             return 0;
         int s = 0;
-        for(int j = i+1; j > 0; j -= j&(-j))
+        for(int j = i+1; j > 0; j -= j&(-j)) // go up
             s += tree[j];
             
         return s;
