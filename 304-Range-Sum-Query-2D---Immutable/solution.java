@@ -11,7 +11,7 @@ public class NumMatrix {
         sum = new int[h][w];
         sum[0][0] = m[0][0];
         for(int i = 1; i < w; i++)
-            sum[0][i] = m[0][i-1] + m[0][i];
+            sum[0][i] = sum[0][i-1] + m[0][i];
         for(int i = 1; i < h; i++)
             sum[i][0] = sum[i-1][0] + m[i][0];
             
@@ -22,10 +22,10 @@ public class NumMatrix {
     }
 
     public int sumRegion(int row1, int col1, int row2, int col2) {
-        row1 = row1 >= sum.length? sum.length-1: row1;
-        row2 = row2 >= sum.length? sum.length-1: row2;
-        col1 = col1 >= sum[0].length? sum[0].length-1: col1;
-        col2 = col2 >= sum[0].length? sum[0].length-1: col2;
+        // row1 = row1 >= sum.length? sum.length-1: row1;
+        // row2 = row2 >= sum.length? sum.length-1: row2;
+        // col1 = col1 >= sum[0].length? sum[0].length-1: col1;
+        // col2 = col2 >= sum[0].length? sum[0].length-1: col2;
         int p1 = row1-1 >= 0? sum[row1-1][col2]:0;
         int p2 = col1-1 >= 0? sum[row2][col1-1]:0;
         int p3 = (row1-1 >= 0 && col1-1 >= 0)? sum[row1-1][col1-1]:0;
