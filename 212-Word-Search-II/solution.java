@@ -1,4 +1,11 @@
 public class Solution {
+    
+    //some tips to optimize the solution
+    //1. change board[i][j] to '#' after it's used instead of a visited array
+    //2.change TrieNode.isWord to TrieNode.word so that we don't need a string or stringbuilder to record current word
+    //3.based on 2, after TrieNode.word is added, change TrieNode.word to "", so that we can avoid to put duplicate word into ans
+    //4.based on 3, if we can avoid dups, we can put result into a list instead of hashset, which saves time of calculating hash value
+    
     // HashSet<String> ans;
     List<String> ans;
     public List<String> findWords(char[][] board, String[] words) {
@@ -41,8 +48,9 @@ public class Solution {
     
     public void addWord(String word, TrieNode root){
         TrieNode cur = root;
+        char[] cs = word.toCharArray();
         for(int i = 0; i < word.length(); i++){
-            int id = word.charAt(i) - 'a';
+            int id = cs[i] - 'a';
             if(cur.get(id) == null)
                 cur.children[id] = new TrieNode();
             cur = cur.get(id);
