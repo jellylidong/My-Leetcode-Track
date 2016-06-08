@@ -35,7 +35,7 @@ public class Trie {
         for(int i = 0; i < word.length(); i++){
             int id = cs[i] - 'a';
             if(cur.get[id] == null){
-                System.out.println("here");
+                // System.out.println("here");
                 return false;
             }
             cur = cur.get[id];
