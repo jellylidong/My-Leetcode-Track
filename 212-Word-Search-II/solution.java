@@ -5,6 +5,7 @@ public class Solution {
     //2.change TrieNode.isWord to TrieNode.word so that we don't need a string or stringbuilder to record current word
     //3.based on 2, after TrieNode.word is added, change TrieNode.word to "", so that we can avoid to put duplicate word into ans
     //4.based on 3, if we can avoid dups, we can put result into a list instead of hashset, which saves time of calculating hash value
+    //5.use word.toCharArray instead word.charAt(i) also helps little
     
     // HashSet<String> ans;
     List<String> ans;
