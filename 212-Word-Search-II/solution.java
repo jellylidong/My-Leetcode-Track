@@ -6,12 +6,15 @@ public class Solution {
         
         ans = new HashSet<>();
         TrieNode root = new TrieNode();
+        boolean[][] visited = new boolean[board.length][board[0].length];
         for(String s: words)
             addWord(s, root);
             
         for(int i = 0; i < board.length; i++){
             for(int j = 0; j <board[0].length; j++){
-                search(board, i, j, root, "");
+                // visited[i][j] = true;
+                search(board, visited, i, j, root, "");
+                // visited[i][j] = false;
             }
         }
         
@@ -43,16 +46,24 @@ public class Solution {
         cur.isWord = true;
     }
     
-    public void search(char[][] board, int i, int j, TrieNode root, String curStr){
-        if(i < 0 || i >= board.length || j < 0 || j >= board[0].length)
-            return;
+    public void search(char[][] board, boolean[][] visited, int i, int j, TrieNode root, String curStr){
+        
         if(root.isWord)
             ans.add(curStr);
+        if(i < 0 || i >= board.length || j < 0 || j >= board[0].length)
+            return;
+            
+        
+        
+        if(visited[i][j])
+            return; 
+
             
         int id = board[i][j] - 'a';
         if(root.get(id) == null)
             return;
         
+        visited[i][j] = true;
         // if(i-1 >= 0)
         //     search(board, i-1, j, root.get(id), curStr + board[i-1][j]);
         // if(i+1 < board.length)
@@ -63,14 +74,22 @@ public class Solution {
         //     search(board, i, j+1, root.get(id), curStr + board[i][j+1]);
         
         
-        search(board, i-1, j, root.get(id), curStr + board[i][j]);
+        search(board, visited, i-1, j, root.get(id), curStr + board[i][j]);
    
-        search(board, i+1, j, root.get(id), curStr + board[i][j]);
+        search(board, visited, i+1, j, root.get(id), curStr + board[i][j]);
    
-        search(board, i, j-1, root.get(id), curStr + board[i][j]);
+        search(board, visited, i, j-1, root.get(id), curStr + board[i][j]);
   
-        search(board, i, j+1, root.get(id), curStr + board[i][j]);
+        search(board, visited, i, j+1, root.get(id), curStr + board[i][j]);
         
-        
+        visited[i][j] = false;
     }
+    
+    /*
+    board: ["aaaa","aaaa","aaaa"]
+    dictionary: ["aaaaaaaaaaaa","aaaaaaaaaaaaa","aaaaaaaaaaab"]
+    
+    ["oaan","etae","ihkr","iflv"]
+    ["oath","pea","eat","rain"]
+    */
 }
