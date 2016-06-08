@@ -53,8 +53,8 @@ public class Solution {
             ans.add(sb.toString());
             root.isWord = false; //once added, we don't need to add again, so label it as not a word
         }
-        // if(i < 0 || i >= board.length || j < 0 || j >= board[0].length)
-        //     return;
+        if(i < 0 || i >= board.length || j < 0 || j >= board[0].length)
+            return;
             
         
         
