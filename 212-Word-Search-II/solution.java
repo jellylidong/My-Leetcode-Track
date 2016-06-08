@@ -49,10 +49,12 @@ public class Solution {
     
     public void search(char[][] board, boolean[][] visited, int i, int j, TrieNode root, StringBuilder sb){
         
-        if(root.isWord)
+        if(root.isWord){
             ans.add(sb.toString());
-        if(i < 0 || i >= board.length || j < 0 || j >= board[0].length)
-            return;
+            root.isWord = false; //once added, we don't need to add again, so label it as not a word
+        }
+        // if(i < 0 || i >= board.length || j < 0 || j >= board[0].length)
+        //     return;
             
         
         
@@ -66,10 +68,14 @@ public class Solution {
         
         visited[i][j] = true;
         sb.append(board[i][j]);
-        search(board, visited, i-1, j, root.get(id), sb);
+        // if(i-1 >= 0)
+            search(board, visited, i-1, j, root.get(id), sb);
+        // if(i+1 < board.length)
         search(board, visited, i+1, j, root.get(id), sb);
-        search(board, visited, i, j-1, root.get(id), sb);
-        search(board, visited, i, j+1, root.get(id), sb);
+        // if(j-1 >= 0)
+            search(board, visited, i, j-1, root.get(id), sb);
+        // if(j+1 < board[0].length)
+            search(board, visited, i, j+1, root.get(id), sb);
         
         visited[i][j] = false;
         sb.	deleteCharAt(sb.length()-1);
