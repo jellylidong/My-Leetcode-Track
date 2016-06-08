@@ -53,12 +53,7 @@ public class Trie {
                 return false;
             cur = cur.get[id];
         }
-        // if(!cur.isWord)
-        //     return true;
-        // for(int i = 0; i < 26; i++){
-        //     if(cur.get[i] != null)
-        //         return true;
-        // }
+        
         return true;
             
     }
