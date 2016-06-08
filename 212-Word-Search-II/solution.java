@@ -1,10 +1,12 @@
 public class Solution {
-    HashSet<String> ans;
+    // HashSet<String> ans;
+    List<String> ans;
     public List<String> findWords(char[][] board, String[] words) {
         if(board.length == 0 || board[0].length == 0)
             return new ArrayList<String>();
         
-        ans = new HashSet<>();
+        // ans = new HashSet<>();
+        ans = new ArrayList<>();
         TrieNode root = new TrieNode();
         // boolean[][] visited = new boolean[board.length][board[0].length];
         for(String s: words)
@@ -19,7 +21,8 @@ public class Solution {
             }
         }
         
-        return new ArrayList<String>(ans);
+        // return new ArrayList<String>(ans);
+        return ans;
     }
     
     public class TrieNode{
