@@ -6,7 +6,7 @@ public class Solution {
         
         ans = new HashSet<>();
         TrieNode root = new TrieNode();
-        boolean[][] visited = new boolean[board.length][board[0].length];
+        // boolean[][] visited = new boolean[board.length][board[0].length];
         for(String s: words)
             addWord(s, root);
             
@@ -14,7 +14,7 @@ public class Solution {
             for(int j = 0; j <board[0].length; j++){
                 // visited[i][j] = true;
                 
-                search(board, visited, i, j, root);
+                search(board, i, j, root);
                 // visited[i][j] = false;
             }
         }
@@ -47,7 +47,7 @@ public class Solution {
         cur.word = word;
     }
     
-    public void search(char[][] board, boolean[][] visited, int i, int j, TrieNode root){
+    public void search(char[][] board, int i, int j, TrieNode root){
         
         if(root.word.length() != 0){
             ans.add(root.word);
@@ -58,25 +58,26 @@ public class Solution {
             
         
         
-        if(visited[i][j])
+        if(board[i][j] == '#')
             return; 
 
             
-        int id = board[i][j] - 'a';
+        char tmp = board[i][j];
+        int id = tmp - 'a';
         if(root.get(id) == null)
             return;
+        board[i][j] = '#';
         
-        visited[i][j] = true;
         // if(i-1 >= 0)
-            search(board, visited, i-1, j, root.get(id));
+            search(board, i-1, j, root.get(id));
         // if(i+1 < board.length)
-        search(board, visited, i+1, j, root.get(id));
+        search(board, i+1, j, root.get(id));
         // if(j-1 >= 0)
-            search(board, visited, i, j-1, root.get(id));
+            search(board, i, j-1, root.get(id));
         // if(j+1 < board[0].length)
-            search(board, visited, i, j+1, root.get(id));
+            search(board, i, j+1, root.get(id));
         
-        visited[i][j] = false;
+        board[i][j] = tmp;
     }
     
     /*
