@@ -18,8 +18,9 @@ public class Trie {
     // Inserts a word into the trie.
     public void insert(String word) {
         TrieNode cur = root;
+        char[] cs = word.toCharArray();
         for(int i = 0; i < word.length(); i++){
-            int id = word.charAt(i) - 'a';
+            int id = cs[i] - 'a';
             if(cur.get[id] == null)
                 cur.get[id] = new TrieNode();
             cur = cur.get[id];
