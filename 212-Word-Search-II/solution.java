@@ -13,8 +13,8 @@ public class Solution {
         for(int i = 0; i < board.length; i++){
             for(int j = 0; j <board[0].length; j++){
                 // visited[i][j] = true;
-                StringBuilder sb = new StringBuilder();
-                search(board, visited, i, j, root, sb);
+                
+                search(board, visited, i, j, root);
                 // visited[i][j] = false;
             }
         }
@@ -23,11 +23,11 @@ public class Solution {
     }
     
     public class TrieNode{
-        boolean isWord;
+        String word;
         TrieNode[] children;
         
         TrieNode(){
-            this.isWord = false;
+            this.word = "";
             children = new TrieNode[26];
         }
         
@@ -44,14 +44,14 @@ public class Solution {
                 cur.children[id] = new TrieNode();
             cur = cur.get(id);
         }
-        cur.isWord = true;
+        cur.word = word;
     }
     
-    public void search(char[][] board, boolean[][] visited, int i, int j, TrieNode root, StringBuilder sb){
+    public void search(char[][] board, boolean[][] visited, int i, int j, TrieNode root){
         
-        if(root.isWord){
-            ans.add(sb.toString());
-            root.isWord = false; //once added, we don't need to add again, so label it as not a word
+        if(root.word.length() != 0){
+            ans.add(root.word);
+            root.word = ""; //once added, we don't need to add again, so label it as not a word
         }
         if(i < 0 || i >= board.length || j < 0 || j >= board[0].length)
             return;
@@ -67,18 +67,16 @@ public class Solution {
             return;
         
         visited[i][j] = true;
-        sb.append(board[i][j]);
         // if(i-1 >= 0)
-            search(board, visited, i-1, j, root.get(id), sb);
+            search(board, visited, i-1, j, root.get(id));
         // if(i+1 < board.length)
-        search(board, visited, i+1, j, root.get(id), sb);
+        search(board, visited, i+1, j, root.get(id));
         // if(j-1 >= 0)
-            search(board, visited, i, j-1, root.get(id), sb);
+            search(board, visited, i, j-1, root.get(id));
         // if(j+1 < board[0].length)
-            search(board, visited, i, j+1, root.get(id), sb);
+            search(board, visited, i, j+1, root.get(id));
         
         visited[i][j] = false;
-        sb.	deleteCharAt(sb.length()-1);
     }
     
     /*
