@@ -10,7 +10,7 @@ public class Solution {
         int len = 0;
         for(int i = 0; i < s.length(); i++){
             char c = s.charAt(i);
-            System.out.println(c + " " + i);
+            // System.out.println(c + " " + i);
             map.put(c, i);
             // System.out.println(map.size());
             if(map.size() > k){
