@@ -4,7 +4,11 @@ public class Solution {
     //there are many small tips that can make the code run to null pointer exceptions
     
     //the basic iead is we use a hash map to keep the char and its index
-    //if the map size > k, we need to remove the first removable char from the left of current Longest Substring with At Most K Distinct Characters 
+    //if the map size > k, we need to remove the first removable char from the left of current Longest Substring with At Most K Distinct Characters
+    
+    //these two cases give very good reason for these considerations
+    // "ababffzzeee" 2
+    // "abaccc" 2
     
     public int lengthOfLongestSubstringKDistinct(String s, int k) {
         if(k == 0)
@@ -29,12 +33,21 @@ public class Solution {
                 //then we can keep the hash map size to k
                 
                 int j = start+1;
-                for(; j <= start2 && map.size() > k; j++){
+                for(; j <= start2 && map.size() > k; j++){//once map size got ==k, we should stop remove
                     //this judge is very important
+                    //for example we go through this string ab...bac...
+                    //after we go though c, we got map size > k
+                    //it's clear that we should remove b and the new sub string shuold start with ac...(start should = 2nd b's position)
+                    //if we don't check j == map.get(s.charAt(j))
+                    //we will remove 1st a, then the loop will stop
+                    //we will get a new start value which is at 1st a's position, wrong !
                     if(j == map.get(s.charAt(j)))
                         map.remove(s.charAt(j));
                 }
-                start = j-1;
+                start = j-1; 
+                //why -1? let's see how this loop works
+                //once remove executed, then j++, then check loop condition
+                //since we define start as the privous one position of the longest substring, so start = j-1
             }
             // System.out.println(start);
             len = i - start;
@@ -43,6 +56,5 @@ public class Solution {
         return max;
     }
     
-    // "ababffzzeee" 2
-    // "abaccc" 2
+
 }
