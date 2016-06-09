@@ -1,9 +1,10 @@
 public class Solution {
     public int longestValidParentheses(String s) {
         int max = 0;
+        char[] cs = s.toCharArray();
         Stack<Integer> stk = new Stack<>();
         for(int i = 0; i < s.length(); i++){
-            char c = s.charAt(i);
+            char c = cs[i];
             if(c == '(')
                 stk.push(i);
             else if(c == ')'){
