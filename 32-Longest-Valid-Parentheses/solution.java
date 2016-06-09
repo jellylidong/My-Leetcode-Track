@@ -38,7 +38,7 @@ public class Solution {
                 if(s.charAt(i-1) == '(')
                     dp[i] = i-2 >= 0? dp[i-2] + 2: 2;
                 if(s.charAt(i-1) == ')')
-                    dp[i] = dp[i-1-dp[i-1]] + 2;
+                    dp[i] = i-1-dp[i-1] >= 0? dp[i-1-dp[i-1]] + 2:0;
             }
             
             max = Math.max(max, dp[i]);
