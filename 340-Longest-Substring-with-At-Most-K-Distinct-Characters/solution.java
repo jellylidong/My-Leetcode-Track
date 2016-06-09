@@ -41,6 +41,8 @@ public class Solution {
                     //if we don't check j == map.get(s.charAt(j))
                     //we will remove 1st a, then the loop will stop
                     //we will get a new start value which is at 1st a's position, wrong !
+                    //ie j == map.get(s.charAt(j) makes sure that we remove current char's most right position 
+                    //(that is to say, all left part include this char will be discarded)
                     if(j == map.get(s.charAt(j)))
                         map.remove(s.charAt(j));
                 }
