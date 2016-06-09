@@ -9,7 +9,7 @@ public class Solution {
             char c = s.charAt(i);
             map.put(c, i);
             if(map.size() > k){
-                char c2 = s.charAt(i-len);
+                char c2 = s.charAt(i-len+1);
                 int start2 = map.get(c2);
                 for(int j = start+1; j <= start2; j++){
                     map.remove(s.charAt(j));
