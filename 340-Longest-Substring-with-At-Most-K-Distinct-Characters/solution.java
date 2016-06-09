@@ -1,5 +1,8 @@
 public class Solution {
     public int lengthOfLongestSubstringKDistinct(String s, int k) {
+        if(k == 0)
+            return 0;
+        
         int max = 0;
         HashMap<Character, Integer> map = new HashMap<>();
         
