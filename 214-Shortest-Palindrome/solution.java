@@ -3,8 +3,8 @@ public class Solution {
         if(s.length() == 0)
             return "";
         String rev = new StringBuilder(s).reverse().toString();
-        // String ss = s + "#" + rev;
-        String ss = s + rev;
+        String ss = s + "#" + rev;
+        // String ss = s + rev;
         int[] kmp = new int[ss.length()];
         int j = 0;
         for(int i = 1; i < ss.length(); i++){
@@ -29,5 +29,5 @@ public class Solution {
     }
     
     // "aacecaaa"
-    //
+    // "aaa"
 }
