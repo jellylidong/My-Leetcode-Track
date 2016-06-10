@@ -55,6 +55,7 @@ public class Solution {
     //     return rev.substring(0, rev.length() - kmp[kmp.length-1]) + s;
     // }
     
+    //this method build two kmps, but not very concise, I think the above method is better
     public String shortestPalindrome(String s) {
         if(s.length() == 0)
             return "";
