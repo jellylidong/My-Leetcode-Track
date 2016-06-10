@@ -21,8 +21,9 @@ public class Solution {
     // for case like "aaa", if don't add "#" the s+rev will be "aaaaaa", the kmp[len-1] is 5, rev.len-kmp[kmp.len-1] < 0
     //adding # can avoid this case
     
-    //based this, actually we don't have use s + res(s), we can build a kmp for rev(s) by compare it with orignal s
-    //
+    //based this, XXXX actually we don't have use s + res(s), we can build a kmp for rev(s) by compare it with orignal s
+    //the above idea is not feasible, the kmp of reverse(s) is based on s's kmp
+    //so we can first build s's kmp, then build reverse(s)'s kmp based on s's kmp  
     
     
     // public String shortestPalindrome(String s) {
@@ -54,34 +55,49 @@ public class Solution {
     //     return rev.substring(0, rev.length() - kmp[kmp.length-1]) + s;
     // }
     
-    
     public String shortestPalindrome(String s) {
-        if(s.length() == 0)
-            return "";
-        String rev = new StringBuilder(s).reverse().toString();
+        int[] kmp_s = new int[s.length()];
+        int[] kmp_r = new int[s.length()];
         
-        int[] kmp = new int[s.length()];
+        String rev = new StringBuilder(s).reverse().toString();
         int j = 0;
-        for(int i = 0; i < s.length(); i++){
-            if(rev.charAt(i) == s.charAt(j)){
+        for(int i = 1; i < s.length(); i++){
+            if(s.charAt(i) == s.charAt(j)){
+                kmp_s[i] = kmp_s[i-1] + 1;
                 j++;
-                kmp[i] = i-1>=0? kmp[i-1] + 1: 1;
             }
             else{
-                while(j != 0 && rev.charAt(i) != s.charAt(j)){
-                    j = kmp[j-1];
+                while(j != 0 && s.charAt(i) != s.charAt(j)){
+                    j = kmp_s[j-1];
                 }
-                if(rev.charAt(i) == s.charAt(j)){
-                    kmp[i] = j + 1;
+                if(s.charAt(i) == s.charAt(j)){
+                    kmp_s[i] = j+1;
                     j++;
                 }
             }
-            
+        }
+        
+        j = 0;
+        for(int i = 0; i < rev.length(); i++){
+            if(rev.charAt(i) == s.charAt(j)){
+                kmp_r[i] = kmp_s[j]+1;
+                j++;
+            }
+            else{
+                while(j != 0 && rev.charAt(i) != s.charAt(j)){
+                    j = kmp_s[j-1];
+                }
+                if(rev.charAt(i) == s.charAt(j)){
+                    kmp_r[i] = j+1;
+                    j++;
+                }
+            }
         }
         
         // System.out.println(rev.length() - kmp[kmp.length-1]);
-        return rev.substring(0, rev.length() - kmp[kmp.length-1]) + s;
+        return rev.substring(0, rev.length() - kmp_r[kmp_r.length-1]) + s;
     }
+    
     // "aacecaaa"
     // "aaa"
 }
