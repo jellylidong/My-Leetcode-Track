@@ -22,6 +22,11 @@ public class Solution {
             dp[ls][lp-1] = p.charAt(lp-1) == '*'; // empty matches "*"
         //do[i][j] means s.substring(i, ls) matches p.substring(j, lp);
         
+        
+        //why do we go from back?
+        //since * can match any sequence,
+        //if we go from left to right, 
+        //we won't be able to know how many chars we should used to match *
         for(int i = ls-1; i >= 0; i--){
             for(int j = lp-1; j >= 0; j--){
                 if(s.charAt(i) == p.charAt(j))
