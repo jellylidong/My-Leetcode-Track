@@ -1,5 +1,7 @@
 public class Solution {
     public String shortestPalindrome(String s) {
+        if(s.length() == 0)
+            return "";
         String rev = new StringBuilder(s).reverse().toString();
         // String ss = s + "#" + rev;
         String ss = s + rev;
