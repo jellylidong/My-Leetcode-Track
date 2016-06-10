@@ -36,11 +36,6 @@ public class Solution {
                             //if current s "XXX" match current p "XXX"
                             //then p becomes "*XXX", let * work as empty string, then s "XXX" matches p "*XXX"
                 }
-                else{
-                    // System.out.println(i + " " + j);
-                    // System.out.println(dp[i][j]);
-                    dp[i][j] = false;
-                }
             }
         }
         
