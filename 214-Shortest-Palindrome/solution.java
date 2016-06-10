@@ -1,30 +1,31 @@
 public class Solution {
     public String shortestPalindrome(String s) {
-        if(s.length() == 0)
-            return "";
-        
-        int i = s.length()-1;
-        
-        StringBuilder sb = new StringBuilder(s);
-        while(i >= 0 && !isP(sb)){
-            StringBuilder head = new StringBuilder(s.substring(i)).reverse();
-            sb = head.append(s);
-            i--;
+        String rev = new StringBuilder(s).reverse().toString();
+        // String ss = s + "#" + rev;
+        String ss = s + rev;
+        int[] kmp = new int[ss.length()];
+        int j = 0;
+        for(int i = 1; i < ss.length(); i++){
+            if(ss.charAt(i) == ss.charAt(j)){
+                j++;
+                kmp[i] = kmp[i-1] + 1;
+            }
+            else{
+                while(j != 0 && ss.charAt(i) != ss.charAt(j)){
+                    j = kmp[j-1];
+                }
+                if(ss.charAt(i) == ss.charAt(j)){
+                    kmp[i] = j + 1;
+                    j++;
+                }
+            }
+            
         }
         
-        return sb.toString();
+        // System.out.println(rev.length() - kmp[kmp.length-1]);
+        return rev.substring(0, rev.length() - kmp[kmp.length-1]) + s;
     }
     
-    public boolean isP(StringBuilder sb){
-        int lo = 0;
-        int hi = sb.length()-1;
-        while(lo < hi){
-            if(sb.charAt(lo) != sb.charAt(hi))
-                return false;
-            lo++;
-            hi--;
-        }
-        
-        return true;
-    }
+    // "aacecaaa"
+    //
 }
