@@ -1,21 +1,23 @@
 public class Solution {
     public boolean isMatch(String s, String p) {
         int lo = 0;
-        while(p.charAt(lo) == '*' && lo < p.length())
+        while(lo < p.length() && p.charAt(lo) == '*')
             lo++;
         lo = lo==0? lo : lo-1;
         
         int hi = p.length()-1;
-        while(p.charAt(hi) == '*' && hi > lo)
+        while(hi > lo && p.charAt(hi) == '*')
             hi--;
             
         p = p.substring(lo, hi+1);
+        // System.out.println(p);
         
         int ls = s.length();
         int lp = p.length();
         
         boolean[][] dp = new boolean[ls+1][lp+1];
         dp[ls][lp] = true; // empty matches empty
+        dp[ls][lp-1] = p.charAt(lp-1) == '*'; // empty matches "*"
         //do[i][j] means s.substring(i, ls) matches p.substring(j, lp);
         
         for(int i = ls-1; i >= 0; i--){
