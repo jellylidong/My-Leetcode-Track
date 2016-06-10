@@ -56,6 +56,8 @@ public class Solution {
     // }
     
     public String shortestPalindrome(String s) {
+        if(s.length() == 0)
+            return "";
         int[] kmp_s = new int[s.length()];
         int[] kmp_r = new int[s.length()];
         
@@ -80,7 +82,7 @@ public class Solution {
         j = 0;
         for(int i = 0; i < rev.length(); i++){
             if(rev.charAt(i) == s.charAt(j)){
-                kmp_r[i] = kmp_s[j]+1;
+                kmp_r[i] = i-1 >= 0? kmp_r[i-1]+1:1;
                 j++;
             }
             else{
