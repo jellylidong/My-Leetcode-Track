@@ -35,7 +35,7 @@ public class Solution {
          HashSet<String> newSet = new HashSet<>();//used to store newly generated child or parent
          for(String s: s1){
              char[] cs = s.toCharArray();
-             for(int i = 0; i < cs.length && !crossed; i++){
+             for(int i = 0; i < cs.length; i++){
                  char pre = cs[i];
                  for(char c='a'; c <= 'z'&& !crossed; c++){
                     //  if(c == pre)
