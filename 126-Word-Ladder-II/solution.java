@@ -7,7 +7,7 @@ public class Solution {
         s2.add(endWord);
         
         HashMap<String, ArrayList<String>> graph = new HashMap<>();
-        buildGraph(s1, s2, dict, graph, false);
+        buildGraph(s1, s2, dict, graph, true);
         
         List<List<String>> ans = new ArrayList<>();
         List<String> sol = new ArrayList<>();
@@ -48,7 +48,7 @@ public class Solution {
                     ArrayList<String> list = graph.containsKey(key)? graph.get(key): new ArrayList<String>();
                     
                     
-                    if(s2.contains(key)){
+                    if(s2.contains(newStr)){
                         list.add(val);
                         graph.put(key, list);
                         crossed = true;
