@@ -14,9 +14,9 @@ public class Solution {
         else{
             for(int i = 0; i < size; i++){
                 if(isValid(row, i, col)){
-                    col[row] = i;
+                    col[row] = i; //why don't need recover it?
                     place(row+1, col, ans, size);
-                    // col[row] = 0;
+                    col[row] = 0;
                 }
             }
         }
@@ -24,7 +24,7 @@ public class Solution {
     
     public boolean isValid(int row, int i, int[] col){
        for(int row2 = 0; row2 < row; row2++){
-            if(col[row2] == i) // in the same col
+            if(col[row2] == i) // in the same col // note the col[row] has not been assigned i here, so we need to check i instead of col[row]
                 return false;
             if(Math.abs(row2-row) == Math.abs(col[row2] - i))
                 return false;
