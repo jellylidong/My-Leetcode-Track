@@ -38,8 +38,8 @@ public class Solution {
              for(int i = 0; i < cs.length && !crossed; i++){
                  char pre = cs[i];
                  for(char c='a'; c <= 'z'&& !crossed; c++){
-                     if(c == pre)
-                        continue;
+                    //  if(c == pre)
+                    //     continue;
                     cs[i] = c;
                     String newStr = new String(cs);
                     String key = genChild? s: newStr;
