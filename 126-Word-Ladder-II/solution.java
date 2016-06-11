@@ -56,7 +56,7 @@ public class Solution {
                     if(!crossed && dict.contains(newStr)){
                         list.add(val);
                         graph.put(key, list);
-                        newSet.add(val);
+                        newSet.add(newStr);
                     }
                  }
                  cs[i] = pre;
