@@ -12,7 +12,10 @@ public class Solution {
         if(word.length() > m*n)
             return false;
         
-        boolean[][] visited = new boolean[m][n];
+        boolean[][] visited = new boolean[m][n]; 
+        // we can use board[i][j] ^= 256 to mark itself as visited when there are only 255 chars
+        // after visited it, we can recover it by board[i][j] ^= 256;
+        //this can save some space
         char[] cs = word.toCharArray();
         for(int i = 0; i < m; i++){
             for(int j = 0; j < n; j++){
@@ -36,7 +39,7 @@ public class Solution {
             
         visited[i][j] = true;
         boolean left = search(i, j-1, visited, board, cs, p+1);
-        if(left)    return true;
+        if(left)    return true; //early termination is necessary, otherwise TLE
         boolean right = search(i, j+1, visited, board, cs, p+1);
         if(right)   return true;
         boolean up = search(i-1, j, visited, board, cs, p+1);
