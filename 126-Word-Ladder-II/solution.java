@@ -19,6 +19,9 @@ public class Solution {
     
     public void buildGraph(HashSet<String> s1, HashSet<String> s2,  Set<String> dict,
                            HashMap<String, ArrayList<String>> graph, boolean genChild){
+         if(s1.isEmpty())
+            return;
+            
          if(s1.size() > s1.size()){
             buildGraph(s2, s1, dict, graph, !genChild);
             return;
