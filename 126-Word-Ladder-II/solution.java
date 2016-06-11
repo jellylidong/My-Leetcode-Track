@@ -37,7 +37,7 @@ public class Solution {
              char[] cs = s.toCharArray();
              for(int i = 0; i < cs.length; i++){
                  char pre = cs[i];
-                 for(char c='a'; c <= 'z'&& !crossed; c++){
+                 for(char c='a'; c <= 'z'; c++){
                     //  if(c == pre)
                     //     continue;
                     cs[i] = c;
