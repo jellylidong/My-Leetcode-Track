@@ -16,7 +16,7 @@ public class Solution {
                 if(isValid(row, i, col)){
                     col[row] = i; //why don't need recover it?
                     place(row+1, col, ans, size);
-                    col[row] = 0;
+                    col[row] = 0; // why recover or not won't influence the result
                 }
             }
         }
