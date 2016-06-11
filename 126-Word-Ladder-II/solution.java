@@ -22,7 +22,7 @@ public class Solution {
          if(s1.isEmpty())
             return;
             
-         if(s1.size() > s1.size()){
+         if(s1.size() > s2.size()){
             buildGraph(s2, s1, dict, graph, !genChild);
             return;
          }
@@ -46,13 +46,16 @@ public class Solution {
                     String val = genChild? newStr: s;
                     
                     ArrayList<String> list = graph.containsKey(key)? graph.get(key): new ArrayList<String>();
-                    list.add(val);
-                    graph.put(key, list);
+                    
                     
                     if(s2.contains(key)){
+                        list.add(val);
+                        graph.put(key, list);
                         crossed = true;
                     }
-                    if(!crossed){
+                    if(!crossed && dict.contains(newStr)){
+                        list.add(val);
+                        graph.put(key, list);
                         newSet.add(val);
                     }
                  }
