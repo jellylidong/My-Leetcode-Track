@@ -11,6 +11,7 @@ public class Solution {
         
         List<List<String>> ans = new ArrayList<>();
         List<String> sol = new ArrayList<>();
+        sol.add(beginWord);
         genList(graph, beginWord, endWord, ans, sol);
         
         return ans;
