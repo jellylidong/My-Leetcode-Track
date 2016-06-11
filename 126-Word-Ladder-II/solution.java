@@ -61,8 +61,8 @@ public class Solution {
                  }
                  cs[i] = pre;
              }
-             if(crossed)
-                break;
+            //  if(crossed)
+            //     break;
          }
          
          if(!crossed)
