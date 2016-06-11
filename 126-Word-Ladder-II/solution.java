@@ -7,7 +7,7 @@ public class Solution {
         s2.add(endWord);
         
         HashMap<String, ArrayList<String>> graph = new HashMap<>();
-        buildGraph(s1, s2, dict, graph, true);
+        buildGraph(s1, s2, dict, graph, false);
         
         List<List<String>> ans = new ArrayList<>();
         List<String> sol = new ArrayList<>();
