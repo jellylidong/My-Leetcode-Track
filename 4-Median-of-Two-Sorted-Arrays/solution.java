@@ -35,16 +35,16 @@ public class Solution {
             
             //nums1[m1+1...hi1], nums2[m2...hi2] > nums[m1]
             //so there would be at least (h1-m1-1+1) + (hi2-m2+1) > nums[m1]
-            if(k <= (m1-lo1+1) + (m2-lo2+1))
-                return helper(nums1, lo1, hi1, nums2, lo2, m2, k);
+            if(k < (m1-lo1+1) + (m2-lo2+1-1))
+                return helper(nums1, lo1, hi1, nums2, lo2, m2-1, k);
             else
                 return helper(nums1, m1+1, hi1, nums2, lo2, hi2, k-(m1-lo1+1));
         }
         else{//nums2[m2] < nums1[m1]
-            if(k <= (m2-lo2+1) + (m1-lo1+1-1)) // the -1 means not include nums1[m1]
+            if(k < (m2-lo2+1) + (m1-lo1+1-1)) // the -1 means not include nums1[m1]
                 return helper(nums2, lo2, hi2, nums1, lo1, m1-1, k);
             else
-                return helper(nums2, m2,  hi2, nums1, lo2, hi2, k-(m2-1-0+1));
+                return helper(nums2, m2+1,  hi2, nums1, lo2, hi2, k-(m2-lo2+1));
         }
     }
 }
