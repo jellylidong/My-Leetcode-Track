@@ -44,7 +44,7 @@ public class Solution {
             if(k < (m2-lo2+1) + (m1-lo1+1-1)) // the -1 means not include nums1[m1]
                 return helper(nums2, lo2, hi2, nums1, lo1, m1-1, k);
             else
-                return helper(nums2, m2+1,  hi2, nums1, lo2, hi2, k-(m2-lo2+1));
+                return helper(nums2, m2+1,  hi2, nums1, lo1, hi1, k-(m2-lo2+1));
         }
     }
 }
