@@ -10,7 +10,7 @@ public class Solution {
                 if(n <= m)
                     count++;
             }
-            if(count > m) // amount of numbers < m is bigger than m, so the dup must <= m
+            if(count > m) // amount of numbers < m is bigger than m, so the dup must <= m (can be m itself)
                 hi = m;
             else
                 lo = m+1;
