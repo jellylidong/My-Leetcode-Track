@@ -10,10 +10,10 @@ public class Solution {
                 if(n <= m)
                     count++;
             }
-            if(count <= m)
-                lo = m+1;
-            else
+            if(count > m) // amount of numbers < m is bigger than m, so the dup must <= m
                 hi = m;
+            else
+                lo = m+1;
         }
         
         return lo;
