@@ -16,6 +16,13 @@ public class Solution {
         if(n == 0)
             return "";
         String ans = "";
+        if(k == 1){
+            for(int num: candidate){
+                if(num != 0)
+                    ans += num;
+            }
+            return ans;
+        }
         int i = k/count[n-1];
         ans += candidate.get(i+1);
         candidate.remove(i+1);
