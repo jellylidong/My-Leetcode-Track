@@ -16,17 +16,17 @@ public class Solution {
         if(n == 0)
             return "";
         String ans = "";
-        if(k == 1){
-            for(int num: candidate){
-                if(num != 0)
-                    ans += num;
-            }
-            return ans;
-        }
-        int i = k/count[n-1];
-        ans += candidate.get(i+1);
-        candidate.remove(i+1);
+        // if(k == 1){
+        //     for(int num: candidate){
+        //         if(num != 0)
+        //             ans += num;
+        //     }
+        //     return ans;
+        // }
+        int i = (k-1)/count[n-1] + 1;
+        ans += candidate.get(i);
+        candidate.remove(i);
         
-        return ans + solve(n-1, k-i*count[n-1], candidate, count);
+        return ans + solve(n-1, k-(i-1)*count[n-1], candidate, count);
     }
 }
