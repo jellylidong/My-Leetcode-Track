@@ -23,6 +23,7 @@ public class Solution {
         //     }
         //     return ans;
         // }
+        // k-1 is used for k = 1 and k = n!, if we use k here, these two cases will get index error
         int i = (k-1)/count[n-1] + 1;
         ans += candidate.get(i);
         candidate.remove(i);
