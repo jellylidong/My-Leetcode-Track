@@ -5,23 +5,25 @@ public class Solution {
         map = new HashMap<>();
         valSet = new HashSet<>();
         map.put("", "");
-        boolean res = match(pattern, str);
+        char[] cs = pattern.toCharArray();
+        boolean res = match(cs, 0, str);
         // for(String key:map.keySet())
             // System.out.println(key + " " + map.get(key));
             
         return res;
     }
     
-    public boolean match(String p, String s){
+    public boolean match(char[] cs, int i, String s){
         
-        if(p.length() == 0 && s.length() != 0)
+        if(cs.length == 0 && s.length() != 0)
             return false;
-        if(map.containsKey(p) && map.get(p).equals(s))
-            return true;
         
-        String ps = p.substring(0, 1);
+        // if(map.containsKey(p) && map.get(p).equals(s))
+        //     return true;
+        
+        String ps = "" + cs[i];
         if(map.containsKey(ps) && s.startsWith(map.get(ps))){
-            boolean res = match(p.substring(1), s.substring(map.get(ps).length()));
+            boolean res = match(cs, i+1, s.substring(map.get(ps).length()));
             if(res)
                 return true;
             
@@ -33,7 +35,7 @@ public class Solution {
                     continue;
                 map.put(ps, ss);
                 valSet.add(ss);
-                boolean res = match(p.substring(1), s.substring(j));
+                boolean res = match(cs, i+1, s.substring(j));
                 if(res) return true;
                 map.remove(ps);
                 valSet.remove(ss);
