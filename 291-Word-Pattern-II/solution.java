@@ -3,7 +3,10 @@ public class Solution {
     HashSet<String> valSet;
     public boolean wordPatternMatch(String pattern, String str) {
         map = new HashMap<>();
-        valSet = new HashSet<>();
+        valSet = new HashSet<>(); 
+        //used to store values
+        //different chars must be map to different strs, ie if a->s1, then b->s1 is invalid
+        
         // map.put("", "");
         char[] cs = pattern.toCharArray();
         return match(cs, 0, str);
