@@ -4,13 +4,13 @@ public class Solution {
     public boolean wordPatternMatch(String pattern, String str) {
         map = new HashMap<>();
         valSet = new HashSet<>();
-        map.put("", "");
+        // map.put("", "");
         char[] cs = pattern.toCharArray();
-        boolean res = match(cs, 0, str);
+        return match(cs, 0, str);
         // for(String key:map.keySet())
             // System.out.println(key + " " + map.get(key));
             
-        return res;
+        // return res;
     }
     
     public boolean match(char[] cs, int i, String s){
