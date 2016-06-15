@@ -21,8 +21,8 @@ public class Solution {
         if(i == cs.length)
             return s.length() == 0;
         
-        // if(cs.length-i < s.length())
-        //     return false;
+        if(cs.length-i > s.length())
+            return false;
         
         // if(map.containsKey(p) && map.get(p).equals(s))
         //     return true;
