@@ -46,5 +46,9 @@ public class Solution {
             else
                 return helper(nums2, m2+1,  hi2, nums1, lo1, hi1, k-(m2-lo2+1));
         }
+        
+        //note: when use devide and conquer, if you use inclusive boundary, ie both lo and hi are inclusive
+        //make sure each branch has at least one changed boundary, ie the new lo and new hi for next branch,
+        //at least one of them is changed, otherwise there can be dead loop
     }
 }
