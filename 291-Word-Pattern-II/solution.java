@@ -21,15 +21,15 @@ public class Solution {
         if(i == cs.length)
             return s.length() == 0;
         
+        // if(cs.length-i < s.length())
+        //     return false;
+        
         // if(map.containsKey(p) && map.get(p).equals(s))
         //     return true;
         
         String ps = "" + cs[i];
         if(map.containsKey(ps) && s.startsWith(map.get(ps))){
-            boolean res = match(cs, i+1, s.substring(map.get(ps).length()));
-            if(res)
-                return true;
-            
+            return match(cs, i+1, s.substring(map.get(ps).length()));
         }
         else if(!map.containsKey(ps)){
             for(int j = 1; j <= s.length(); j++){
