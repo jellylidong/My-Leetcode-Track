@@ -40,6 +40,9 @@ public class Solution {
     public void genPerm(List<Character> list, List<String> ans, String mid, boolean[] used, StringBuilder sb){
         if(sb.length() == list.size()){
             ans.add(sb.toString() + mid + sb.reverse().toString());
+            
+            //note here, sb.reverse() reverses itself
+            //so we must reverse it back after we call sb.reverse()
             sb.reverse();
             return;
         }
