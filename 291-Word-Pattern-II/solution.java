@@ -15,8 +15,11 @@ public class Solution {
     
     public boolean match(char[] cs, int i, String s){
         
-        if(cs.length == 0 && s.length() != 0)
-            return false;
+        // if(cs.length == 0 && s.length() != 0)
+        //     return false;
+            
+        if(i == cs.length)
+            return s.length() == 0;
         
         // if(map.containsKey(p) && map.get(p).equals(s))
         //     return true;
