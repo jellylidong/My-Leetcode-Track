@@ -1,4 +1,5 @@
 public class Solution {
+    //the comment is kind of mess, re-think!!!!!!!
     public int largestRectangleArea(int[] heights) {
         Stack<Integer> stack = new Stack<>();
         int max = 0;
@@ -18,19 +19,13 @@ public class Solution {
                     int area = len * heights[left];
                     max = Math.max(max, area);
                 }
-                //note the area here does not include i
-                //now if stack is empty, it means all heights before i is <= heights[i]
+                //note the area here does not include two boundaries, ie does not include i and stack.peek()
+                //if stack is empty, it means all heights int (left, i) and (0, left) both exclusive is >= heights[left]
                 //then the length is (i-1) - (-1+1) + 1 = i
                 //if stack is not empty, the peek of stack is heights[stack.peek()] > heights[i]
                 //then the length is (i-1) - (stack.peek()+1) + 1 = i - stack.peek() - 1
                 
-                // int len = 0;
-                // if(stack.isEmpty())
-                //     len = i;
-                // else
-                //     len = i - stack.peek() - 1;
-                // int area = len * heights[i];
-                // max = Math.max(area, max);
+                
                 
                 stack.push(i);
             }
