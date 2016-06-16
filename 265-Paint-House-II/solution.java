@@ -25,6 +25,9 @@ public class Solution {
         return min;
     }
     
+    //the returned ans[i] is the min value in nums except nums[i]
+    //don't use arrays.sort here to find the minimum two numbers
+    //otherwise we can not meet the O(kn) complexity
     public int[] findMin(int[] nums){
         int min1 = Integer.MAX_VALUE;
         int min2 = Integer.MAX_VALUE;
