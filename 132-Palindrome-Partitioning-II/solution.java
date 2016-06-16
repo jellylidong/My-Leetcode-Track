@@ -11,9 +11,8 @@ public class Solution {
         return helper(s, 0, len, count);
     }
     
-    public boolean isP(String s){
-        int lo = 0;
-        int hi = s.length()-1;
+    public boolean isP(String s, int lo, int hi){
+        
         while(lo < hi){
             if(s.charAt(lo) != s.charAt(hi))
                 return false;
@@ -26,8 +25,8 @@ public class Solution {
     public int helper(String s, int lo, int hi, int[][] count){
         if(count[lo][hi] != -1)
             return count[lo][hi];
-        String cur = s.substring(lo, hi);
-        if(isP(cur)){
+        // String cur = s.substring(lo, hi);
+        if(isP(s, lo, hi-1)){
             count[lo][hi] = 0;
             return 0;
         }
