@@ -4,7 +4,7 @@ public class Solution {
         if(amount <= 0)
             return 0;
         
-        // Arrays.sort(coins);
+        Arrays.sort(coins);
         map = new HashMap<>(); // key is amunt, val is the min ways
         return helper(coins, amount);
     }
@@ -22,6 +22,8 @@ public class Solution {
             int cur = helper(coins, amount-coins[i]);
             if(cur >= 0)
                 ans = Math.min(ans, 1+cur);
+            else
+                break;
         }
         ans = ans == Integer.MAX_VALUE? -1: ans;
         map.put(amount, ans);
