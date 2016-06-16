@@ -19,10 +19,12 @@ public class Solution {
             
         int ans = Integer.MAX_VALUE;
         for(int i = 0; i < coins.length; i++){
+            if(amount-coins[i] < 0)
+                break;
             int cur = helper(coins, amount-coins[i]);
             if(cur >= 0)
                 ans = Math.min(ans, 1+cur);
-            // else break;
+
         }
         ans = ans == Integer.MAX_VALUE? -1: ans;
         map.put(amount, ans);
