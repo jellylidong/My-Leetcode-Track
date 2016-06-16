@@ -4,7 +4,7 @@ public class Solution {
         if(amount <= 0)
             return 0;
         
-        Arrays.sort(coins);
+        // Arrays.sort(coins);
         map = new HashMap<>(); // key is amunt, val is the min ways
         return helper(coins, amount);
     }
