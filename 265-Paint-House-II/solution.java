@@ -10,9 +10,10 @@ public class Solution {
         int[][] dp = new int[n][k];
         for(int i = 0; i < k; i++)
             dp[0][i] = costs[0][i];
+            
         for(int i = 1; i < n; i++){
             int[] min = findMin(dp[i-1]);
-            for(int j = 0; j < k; k++){
+            for(int j = 0; j < k; j++){
                 dp[i][j] = costs[i][j] + min[j];
             }
         }
@@ -50,7 +51,7 @@ public class Solution {
             else if(nums[i] == min2)
                 ans[i] = min1;
             else
-                nums[i] = min1;
+                ans[i] = min1;
         }
         return ans;
     }
