@@ -22,7 +22,7 @@ public class Solution {
             int cur = helper(coins, amount-coins[i]);
             if(cur >= 0)
                 ans = Math.min(ans, 1+cur);
-            else break;
+            // else break;
         }
         ans = ans == Integer.MAX_VALUE? -1: ans;
         map.put(amount, ans);
