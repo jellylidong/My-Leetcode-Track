@@ -1,4 +1,6 @@
 public class Solution {
+    
+    //use array mem[i] store the amount i's min ways is much faster than HashMap
     // HashMap<Integer, Integer> map;
     int[] mem;
     public int coinChange(int[] coins, int amount) {
