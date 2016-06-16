@@ -1,45 +1,25 @@
 public class Solution {
     public int minCut(String s) {
         int len = s.length();
-        int[][] count = new int[len+1][len+1];
-        for(int i = 0; i <= len; i++){
-            for(int j = i; j <= len; j++)
-                count[i][j] = -1;
-        }
-        count[0][0] = 0;
-        
-        return helper(s, 0, len, count);
-    }
-    
-    public boolean isP(String s, int lo, int hi){
-        
-        while(lo < hi){
-            if(s.charAt(lo) != s.charAt(hi))
-                return false;
-            lo++;
-            hi--;
-        }
-        return true;
-    }
-    
-    public int helper(String s, int lo, int hi, int[][] count){
-        if(count[lo][hi] != -1)
-            return count[lo][hi];
-        // String cur = s.substring(lo, hi);
-        if(isP(s, lo, hi-1)){
-            count[lo][hi] = 0;
+        if(len == 0)
             return 0;
-        }
-        else{
-            int min = Integer.MAX_VALUE;
-            for(int i = lo+1; i < hi; i++){
-                
-                min = Math.min(min, 1 +helper(s, lo, i, count) + helper(s, i, hi, count));
-                if(min == 1)
-                    break;
+            
+        boolean[][] isP = new boolean[len][len];// isP[i][j] mean s.substring(i, j+1) isP
+        int[] cut = new int[len]; // cut[i] is the min cut of s.substring(i);
+        
+        for(int i = len-1; i >= 0; i--){
+            cut[i] = len-i-1;// s.substring(i).length()-1
+            for(int j = i; j < len; j++){
+                if(s.charAt(j) == s.charAt(i) && (j-i <= 1 || isP[i+1][j-1])){
+                    isP[i][j] = true;
+                    if(j == len-1)
+                        cut[i] = 0;
+                    else
+                        cut[i] = Math.min(cut[i], 1+cut[j+1]);
+                } 
             }
-            count[lo][hi] = min;
-            return min;
         }
+        
+        return cut[0];
     }
 }
