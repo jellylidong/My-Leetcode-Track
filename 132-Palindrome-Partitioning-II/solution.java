@@ -36,6 +36,8 @@ public class Solution {
             for(int i = lo+1; i < hi; i++){
                 
                 min = Math.min(min, 1 +helper(s, lo, i, count) + helper(s, i, hi, count));
+                if(min == 1)
+                    break;
             }
             count[lo][hi] = min;
             return min;
