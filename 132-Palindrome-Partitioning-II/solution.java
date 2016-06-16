@@ -12,9 +12,12 @@ public class Solution {
             for(int j = i; j < len; j++){
                 if(s.charAt(j) == s.charAt(i) && (j-i <= 1 || isP[i+1][j-1])){//(same positon || not same position but isP)
                     isP[i][j] = true;
-                    // if(j == len-1)
-                    //     cut[i] = 0;
-                    // else
+                    if(j == len-1) {
+                    //the substirng is s.substring(i, len), it's already the current whole string
+                    //so we don't need to cut it anymore, so cut[i] is 0
+                        cut[i] = 0;
+                    }
+                    else
                         cut[i] = Math.min(cut[i], 1+cut[j+1]); 
                         // since isP[i][j],we may cut it as s.substring(i, j+1) ans s.substring(i+1)
                 } 
