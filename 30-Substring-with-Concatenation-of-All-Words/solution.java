@@ -3,29 +3,45 @@ public class Solution {
         List<Integer> ans = new ArrayList<>();
         if(words.length == 0)
             return ans;
-        HashSet<String> ws = new HashSet<>();
+        HashMap<String, Integer> ws = new HashMap<>();
+        int wordCount = 0;
         for(String ss: words){
-            ws.add(ss);
+            if(ws.containsKey(ss))
+                ws.put(ss, ws.get(ss) + 1);
+            else
+                ws.put(ss, 1);
+            wordCount++;
         }
         int len = words[0].length();
         for(int i = 0; i <= s.length()-len; ){
             String cur = s.substring(i, i+len);
-            if(ws.contains(cur)){
-                HashSet<String> used = new HashSet<>();
-                used.add(cur);
+            if(ws.containsKey(cur)){
+                int curCount = 0;
+                HashMap<String, Integer> used = new HashMap<>();
+                used.put(cur, 1);
+                curCount++;
                 for(int j = i+len; j <= s.length()-len;){
                     String curStr = s.substring(j, j+len);
-                    if(!used.contains(curStr) && ws.contains(curStr)){
-                        used.add(curStr);
+                    if(!used.containsKey(curStr) && ws.containsKey(curStr)){
+                        used.put(curStr, 1);
                         j += len;
+                        curCount++;
+                    }
+                    else if(used.containsKey(curStr) && used.get(curStr) < ws.get(curStr)){
+                        used.put(curStr, used.get(curStr) + 1);
+                        j += len;
+                        curCount++;
                     }
                     else{
                         break;
                     }
                 }
-                if(used.size() == ws.size()){
+                if(curCount == wordCount){
                     ans.add(i);
-                    i += len*used.size();
+                    i ++;
+                }
+                else{
+                    i++;
                 }
             }
             else{
