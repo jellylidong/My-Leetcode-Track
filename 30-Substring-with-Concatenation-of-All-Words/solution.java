@@ -18,7 +18,7 @@ public class Solution {
             int count = 0;
             HashMap<String, Integer> used = new HashMap<>();
             int left = i;
-            for(int j = i; j <= s.length()-len-i; j+=len){
+            for(int j = i; j <= s.length()-len; j+=len){
                 String str = s.substring(j, j+len);
                 if(ws.containsKey(str)){
                     if(!used.containsKey(str) || used.get(str) < ws.get(str)){
@@ -31,6 +31,7 @@ public class Solution {
                             used.put(cur, used.get(cur) - 1);
                             count--;
                             left += len;
+                            cur = s.substring(left, left+len);
                         }
                         used.put(str, used.get(str)+1);
                         count++;
@@ -38,6 +39,9 @@ public class Solution {
                     if(count == words.length){
                         ans.add(left);
                     }
+                }
+                else{
+                    left += len;
                 }
             }
         }
