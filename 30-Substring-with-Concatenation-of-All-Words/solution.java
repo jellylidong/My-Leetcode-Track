@@ -3,49 +3,42 @@ public class Solution {
         List<Integer> ans = new ArrayList<>();
         if(words.length == 0)
             return ans;
+            
+        int len = words[0].length();
         HashMap<String, Integer> ws = new HashMap<>();
-        int wordCount = 0;
+        
         for(String ss: words){
             if(ws.containsKey(ss))
                 ws.put(ss, ws.get(ss) + 1);
             else
                 ws.put(ss, 1);
-            wordCount++;
         }
-        int len = words[0].length();
-        for(int i = 0; i <= s.length()-len; ){
-            String cur = s.substring(i, i+len);
-            if(ws.containsKey(cur)){
-                int curCount = 0;
-                HashMap<String, Integer> used = new HashMap<>();
-                used.put(cur, 1);
-                curCount++;
-                for(int j = i+len; j <= s.length()-len;){
-                    String curStr = s.substring(j, j+len);
-                    if(!used.containsKey(curStr) && ws.containsKey(curStr)){
-                        used.put(curStr, 1);
-                        j += len;
-                        curCount++;
-                    }
-                    else if(used.containsKey(curStr) && used.get(curStr) < ws.get(curStr)){
-                        used.put(curStr, used.get(curStr) + 1);
-                        j += len;
-                        curCount++;
+        
+        for(int i = 0; i < len; i++){
+            int count = 0;
+            HashMap<String, Integer> used = new HashMap<>();
+            int left = i;
+            for(int j = i; j <= s.length()-len-i; j+=len){
+                String str = s.substring(j, j+len);
+                if(ws.containsKey(str)){
+                    if(!used.containsKey(str) || used.get(str) < ws.get(str)){
+                        used.put(str, used.containsKey(str)? used.get(str)+1: 1);
+                        count++;
                     }
                     else{
-                        break;
+                        String cur = s.substring(left, left+len);
+                        while(used.get(cur) == ws.get(cur)){
+                            used.put(cur, used.get(cur) - 1);
+                            count--;
+                            left += len;
+                        }
+                        used.put(str, used.get(str)+1);
+                        count++;
+                    }
+                    if(count == words.length){
+                        ans.add(left);
                     }
                 }
-                if(curCount == wordCount){
-                    ans.add(i);
-                    i ++;
-                }
-                else{
-                    i++;
-                }
-            }
-            else{
-                i++;
             }
         }
         
