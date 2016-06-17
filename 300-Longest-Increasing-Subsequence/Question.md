@@ -31,4 +31,4 @@ Special thanks to [@pbrother](https://leetcode.com/discuss/user/pbrother) for ad
 
 <div id="similar" class="btn btn-xs btn-warning">Show Similar Problems</div>
 
-<span class="hidebutton">[(M) Increasing Triplet Subsequence](/problems/increasing-triplet-subsequence/)</span></div>
+<span class="hidebutton">[(M) Increasing Triplet Subsequence](/problems/increasing-triplet-subsequence/) [(H) Russian Doll Envelopes](/problems/russian-doll-envelopes/)</span></div>
