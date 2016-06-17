@@ -20,16 +20,33 @@ public class Solution {
             int left = i;
             for(int j = i; j <= s.length()-len; j+=len){
                 String str = s.substring(j, j+len);
+                
                 if(ws.containsKey(str)){
                     used.put(str, used.containsKey(str)? used.get(str)+1: 1);
+                    //first put words into used, then we decide if the words we put in is valid
+                    
+                    //valid put, so count++;
                     if(used.get(str) <= ws.get(str)){
                         count++;
                     }
-                    else{
+                    
+                    //invalid put, note the count value does not include the invalid put
+                    else{//we put more words into used than ws, 
+                         // so we need to remove words from left until there're no more words
                         
                         while(used.get(str) > ws.get(str)){
                             String tmp = s.substring(left, left+len);
                             used.put(tmp, used.get(tmp)-1);
+                            
+                            //note here, since we have a invalid put, that is to say
+                            //for example used is ("a", 2), ws is ("a", 1)
+                            //after we reduce 1 , used becomes ("a", 1)
+                            //in this case, it means we just remove the invalidly put word,
+                            //since the count does not include the invalid put, so this case count should not be reduce 1
+                            /*
+                            "barfoofoobarthefoobarman"
+                            ["bar","foo","the"]
+                            */
                             if(used.get(tmp) < ws.get(tmp))
                                 count--;
                             if(used.get(tmp) == 0)
