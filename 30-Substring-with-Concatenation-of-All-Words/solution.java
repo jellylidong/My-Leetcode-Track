@@ -21,27 +21,41 @@ public class Solution {
             for(int j = i; j <= s.length()-len; j+=len){
                 String str = s.substring(j, j+len);
                 if(ws.containsKey(str)){
-                    if(!used.containsKey(str) || used.get(str) < ws.get(str)){
-                        used.put(str, used.containsKey(str)? used.get(str)+1: 1);
+                    used.put(str, used.containsKey(str)? used.get(str)+1: 1);
+                    if(used.get(str) <= ws.get(str)){
                         count++;
                     }
                     else{
-                        String cur = s.substring(left, left+len);
-                        while(used.get(cur) == ws.get(cur)){
-                            used.put(cur, used.get(cur) - 1);
-                            count--;
+                        
+                        while(used.get(str) > ws.get(str)){
+                            String tmp = s.substring(left, left+len);
+                            used.put(tmp, used.get(tmp)-1);
+                            if(used.get(tmp) < ws.get(tmp))
+                                count--;
+                            if(used.get(tmp) == 0)
+                                used.remove(tmp);
+                        
                             left += len;
-                            cur = s.substring(left, left+len);
+                            
                         }
-                        used.put(str, used.get(str)+1);
-                        count++;
                     }
+                        
                     if(count == words.length){
+                        
                         ans.add(left);
+                        String tmp = s.substring(left, left+len);
+                        used.put(tmp, used.get(tmp)-1);
+                        if(used.get(tmp) == 0)
+                            used.remove(tmp);
+                        left += len;
+                        count--;
+                       
                     }
                 }
                 else{
-                    left += len;
+                    used = new HashMap<>();
+                    count = 0;
+                    left = j+len;
                 }
             }
         }
