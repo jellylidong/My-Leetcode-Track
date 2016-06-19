@@ -7,6 +7,9 @@ public class Solution {
             return "0";
         if((n > 0 && d < 0) || (n < 0 && d > 0))
             sb.append("-");
+            
+        //note when using Math.abs(), must consider overflow 
+        //abs(-int.min) will overflow, so must transform it to long before abs
         long nn = Math.abs((long)n);
         long dd = Math.abs((long)d);
         
