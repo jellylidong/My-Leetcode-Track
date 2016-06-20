@@ -1,8 +1,8 @@
 public class Solution {
     //"abacb"
     public String removeDuplicateLetters(String s) {
-        int[] count = new int[26];
-        boolean[] isIn = new boolean[26];
+        int[] count = new int[26]; // count of all chars
+        boolean[] isIn = new boolean[26]; //if the cha is in the stack
         for(int i = 0; i < s.length(); i++){
             count[s.charAt(i)-'a']++;
         }
