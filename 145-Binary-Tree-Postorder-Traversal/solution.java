@@ -8,6 +8,9 @@
  * }
  */
 public class Solution {
+    //another way is to push inorder of mid, left, right
+    //pop and store the value each time, then reverse the list
+    
     //left, right, root
     public List<Integer> postorderTraversal(TreeNode root) {
         List<Integer> ans = new ArrayList<>();
