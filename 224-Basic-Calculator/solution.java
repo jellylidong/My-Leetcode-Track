@@ -16,7 +16,7 @@ public class Solution {
                 stack.pop();
                 stack.push(tmp);
             }
-            else{
+            else if(c >= '0' && c <= '9'){
                 int j = i+1;
                 while(j < s.length() && sb.charAt(j) >= '0' && sb.charAt(j) <= '9')
                     j++;
@@ -31,6 +31,10 @@ public class Solution {
             }
         }
         
-        return Integer.parseInt(stack.pop());
+        int ans = 0;
+        while(!stack.isEmpty()){
+            ans += Integer.parseInt(stack.pop());
+        }
+        return ans;
     }
 }
