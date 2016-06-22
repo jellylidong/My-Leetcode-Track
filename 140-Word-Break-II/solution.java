@@ -43,11 +43,9 @@ public class Solution {
     public List<String> wordBreak(String s, Set<String> dict) {
         
             
-        //two points of thisproblem
-        //1. use s.startsWith(...)
-        //2. use memory search, that is to say
-        //store sub result to hash map where key is stirng and value is a string list of all possible break
+        
         HashMap<String, ArrayList<String>> map = new HashMap<>();
+        map.put("", new ArrayList<String>());
         
         return solve(s, dict, map);
         
