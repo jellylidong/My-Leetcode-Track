@@ -11,7 +11,7 @@ public class Solution {
                 return true;
                 
             for(String str: wordDict){
-                if(s.substring(start, start+str.length()).equals(str)){
+                if(start+str.length() <= s.length() && s.substring(start, start+str.length()).equals(str)){
                     if(!visited.contains(start+str.length())){
                         q.offer(start+str.length());
                         visited.add(start+str.length());
