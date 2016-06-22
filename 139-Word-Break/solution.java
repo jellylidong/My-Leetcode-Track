@@ -2,6 +2,14 @@ public class Solution {
     
     //snapt chat OA, use BFS is faster
     public boolean wordBreak(String s, Set<String> wordDict) {
+        
+        if(s.length() == 0){
+            if(wordDict.contains(s))
+                return true;
+            else
+                return false;
+        }
+        
         Queue<Integer> q = new LinkedList<>();
         HashSet<Integer> visited = new HashSet<>();
         
