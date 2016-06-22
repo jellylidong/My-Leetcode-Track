@@ -23,6 +23,7 @@ public class Solution {
         //     }
         // }
         
+        //BFS by traversing s, both are OK, but in leetcode testcases, traversing wordDict is faster
         while(!q.isEmpty()){
             int start = q.poll();
             if(start == s.length())
