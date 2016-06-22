@@ -1,80 +1,34 @@
 public class Solution {
-    // public List<String> wordBreak(String s, Set<String> wordDict) {
-    //     List<String> list = new ArrayList<>();
-    //     // for(int i = s.length()-1; i >= 0; i--){
-    //     //     if(wordDict.contains(s.substring(i)))
-    //     //         break;
-    //     //     else{
-    //     //         if(i == 0)
-    //     //             return list;
-    //     //     }
-    //     // }
+    public List<String> wordBreak(String s, Set<String> wordDict) {
+        if(s.length() == 0)
+            return new ArrayList<>();
         
-    //     for(int i = 0; i < s.length(); i++){
-    //         if(wordDict.contains(s.substring(0, i))){
-    //             String head = s.substring(0, i);
-    //             List<String> cur = wordBreak(s.substring(i), wordDict);
-    //             for(String str: cur){
-    //                 list.add(head + " " + str);
-    //             }
-    //         }
-    //     }
-    //     if(wordDict.contains(s))
-    //         list.add(s);
-    //     return list;
-    // }
-    
-    // public List<String> wordBreak(String s, Set<String> wordDict, int max){
-        
-    // }
-    
-    //the above code will get LTE
-    //https://leetcode.com/discuss/91894/java-6ms-simple-solution-beating-88%25
-    //to save time, we can do two things
-    //first, find the max word length in dictionary,
-    //then for each sub wordbreak, we start from i = 0; if when i = maxLen we still can't find word in the dict
-    //we can stop search
-    //second, store the start index and the list with this index into hashmap
-    //for example, in substring s1, we find we substring at j, then map.put(j, j's list)
-    //then if in another substirng s2, if we find substring at j again, we don't need to recurse into further level
-    //we can find it from the map
-    //this saves a lot time
-    
-    public List<String> wordBreak(String s, Set<String> dict) {
-        
+        HashMap<String, List<String>> map = new HashMap<>();
             
-        
-        HashMap<String, ArrayList<String>> map = new HashMap<>();
-        map.put("", new ArrayList<String>());
-        
-        return solve(s, dict, map);
-        
+        return helper(s, map, wordDict);
     }
     
-    public List<String> solve(String s, Set<String> dict, HashMap<String, ArrayList<String>> map){
+    
+    public List<String> helper(String s, HashMap<String, List<String>> map, Set<String> wordDict){
         if(map.containsKey(s))
             return map.get(s);
             
-        ArrayList<String> curList = new ArrayList<>();
-        if(dict.contains(s))
-            curList.add(s);
-            
-        for(String str: dict){
+        List<String> ans = new ArrayList<>();
+        if(wordDict.contains(s))
+            ans.add(s);
+        for(String str: wordDict){
             if(s.startsWith(str)){
-                List<String> nextList = solve(s.substring(str.length()), dict, map);
-                for(String nextStr: nextList)
-                    curList.add(str + " " + nextStr);
+                List<String> subAns = helper(s.substring(str.length()), map, wordDict);
+                for(String cur: subAns){
+                    ans.add(str + " " + cur);
+                }
             }
+            // if(str.equals(s))
+            //     ans.add(str);
         }
         
-        map.put(s, curList);
+        map.put(s, ans);
         
-        return curList;
-        
+        return ans;
     }
-    
-    
-    
-    
-    
 }
