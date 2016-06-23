@@ -62,7 +62,7 @@ public class LRUCache {
     public void print(){
         node n = head;
         while(n != null) {
-            System.out.print(n.val + "+" + n.key + ", ");
+            System.out.print(n.key + "+" + n.val + ", ");
             n = n.next;
         }
         System.out.println();
@@ -79,5 +79,15 @@ public class LRUCache {
             pre = null;
             next = null;
         }
+    }
+
+    public static void main(String[] args){
+        LRUCache sol = new LRUCache(1);
+        sol.set(2, 1);
+        sol.print();
+        sol.set(3,2);
+        sol.print();
+        System.out.println(sol.get(2));
+        System.out.println(sol.get(3));
     }
 }
