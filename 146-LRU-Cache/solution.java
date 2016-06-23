@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 public class LRUCache {
 
     node cur;
@@ -24,6 +26,8 @@ public class LRUCache {
             pre.next = next;
             if(next != null)
                 next.pre = pre;
+            else
+                cur = cur.pre;
             cur.next = curNode;
             curNode.pre = cur;
             curNode.next = null;
@@ -43,7 +47,7 @@ public class LRUCache {
                 if(next.next != null)
                     next.next.pre = head;
                 else
-                    cur = head;
+                    cur = cur.pre;
                 count--;
                 map.remove(next.key);
             }
@@ -82,12 +86,20 @@ public class LRUCache {
     }
 
     public static void main(String[] args){
-        LRUCache sol = new LRUCache(1);
-        sol.set(2, 1);
-        sol.print();
+        LRUCache sol = new LRUCache(2);
+//        sol.set(2, 1);
+//        System.out.println(sol.get(2));
+//        sol.print();
+//        sol.set(3,2);
+//        sol.print();
+//        System.out.println(sol.get(2));
+//        System.out.println(sol.get(3));
+        sol.set(2,1);
         sol.set(3,2);
         sol.print();
-        System.out.println(sol.get(2));
         System.out.println(sol.get(3));
+        sol.print();
+        System.out.println(sol.get(2));
+        sol.print();
     }
 }
