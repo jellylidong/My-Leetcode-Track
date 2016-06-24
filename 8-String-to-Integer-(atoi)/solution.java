@@ -1,4 +1,8 @@
 public class Solution {
+    
+    //heading and trailing space
+    //number start with 0
+    //number start with sign
     public int myAtoi(String str) {
         str = str.trim();
         if(str.length() == 0)
