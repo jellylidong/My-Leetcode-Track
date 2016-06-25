@@ -7,6 +7,9 @@ public class Solution {
             int mid = lo + (hi-lo)/2;
             if(nums[mid] == target)
                 return mid;
+            
+            //one of the two branches must cover == target
+            //[3,1], 1
             if(nums[mid] >= nums[lo]){
                 if(nums[lo] <= target && target < nums[mid])
                     hi = mid-1;
