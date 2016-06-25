@@ -19,7 +19,7 @@ public class Solution {
             for(int i = 0; i < lists.length; i++){
                 ListNode cur = lists[i];
                 if(cur != null){
-                    if(cur.val >= min){
+                    if(cur.val <= min){
                         min = cur.val;
                         minId = i;
                     }
