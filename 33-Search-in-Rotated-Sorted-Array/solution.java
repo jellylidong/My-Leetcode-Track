@@ -10,6 +10,7 @@ public class Solution {
             
             //one of the two branches must cover == target
             //[3,1], 1
+            //mid can == lo
             if(nums[mid] >= nums[lo]){
                 if(nums[lo] <= target && target < nums[mid])
                     hi = mid-1;
