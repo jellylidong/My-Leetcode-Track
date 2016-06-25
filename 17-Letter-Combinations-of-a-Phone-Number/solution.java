@@ -10,7 +10,7 @@ public class Solution {
             List<String> newAns = new ArrayList<>();
             for(int j = 0; j < cur.length(); j++){
                 for(String s: ans){
-                    ans.add(s + cur.charAt(j));
+                    newAns.add(s + cur.charAt(j));
                 }
             }
             ans = newAns;
