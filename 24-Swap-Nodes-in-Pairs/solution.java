@@ -9,23 +9,19 @@
 public class Solution {
     public ListNode swapPairs(ListNode head) {
         ListNode helper = new ListNode(0);
+        helper.next = head;
         ListNode pre = helper;
         ListNode cur = head;
-        ListNode cur2 = head;
         
         while(cur != null){
-            if(cur.next != null){
-                cur2 = cur.next;
-                cur.next = cur2.next;
-                cur2.next = cur;
-                pre.next = cur2;
-                pre = cur;
-                cur = cur.next;
-            }
-            else{
-                pre.next = cur;
+            ListNode next = cur.next;
+            if(next == null)
                 break;
-            }
+            pre.next = next;
+            cur.next = next.next;
+            next.next = cur;
+            pre = cur;
+            cur = cur.next;
         }
         
         return helper.next;
