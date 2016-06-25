@@ -7,7 +7,7 @@ public class Solution {
             int mid = lo + (hi-lo)/2;
             if(nums[mid] == target)
                 return mid;
-            if(nums[mid] > nums[lo]){
+            if(nums[mid] >= nums[lo]){
                 if(nums[lo] <= target && target < nums[mid])
                     hi = mid-1;
                 else
@@ -21,6 +21,6 @@ public class Solution {
             }
         }
         
-        return nums[hi] == target? lo: -1;
+        return nums[lo] == target? lo: -1;
     }
 }
