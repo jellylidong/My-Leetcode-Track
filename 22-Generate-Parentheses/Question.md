@@ -6,7 +6,14 @@ Given _n_ pairs of parentheses, write a function to generate all combinations of
 
 For example, given _n_ = 3, a solution set is:
 
-`"((()))", "(()())", "(())()", "()(())", "()()()"`
+<pre>[
+  "((()))",
+  "(()())",
+  "(())()",
+  "()(())",
+  "()()()"
+]
+</pre>
 
 <div>
 
