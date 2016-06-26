@@ -1,20 +1,18 @@
 public class Solution {
-    List<List<Integer>> ans;
     public List<List<Integer>> subsets(int[] nums) {
-        Arrays.sort(nums);
-        ans = new ArrayList<>();
-        List<Integer> list = new ArrayList<>();
-        gen(nums, 0, list);
+        List<List<Integer>> ans = new ArrayList<>();
+         ans.add(new ArrayList<Integer>());
+        helper(nums, ans, new ArrayList<Integer>(), 0);
+       
         return ans;
     }
     
-    public void gen(int[] nums, int start, List<Integer> list){
-        ans.add(new ArrayList<Integer>(list));
-        
+    public void helper(int[] nums, List<List<Integer>> ans, List<Integer> curList, int start){
         for(int i = start; i < nums.length; i++){
-            list.add(nums[i]);
-            gen(nums, i+1, list);
-            list.remove(list.size()-1);
+            curList.add(nums[i]);
+            ans.add(new ArrayList<Integer>(curList));
+            helper(nums, ans, curList, i+1);
+            curList.remove(curList.size()-1);
         }
     }
 }
