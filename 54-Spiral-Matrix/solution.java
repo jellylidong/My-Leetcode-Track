@@ -20,15 +20,19 @@ public class Solution {
                 ans.add(m[i][right]);
             right--;
             
+            //when going left, must ganrantee current row  is valid
             if(up <= down)
                 for(int i = right; i >= left; i--)
                     ans.add(m[down][i]);
             down--;
             
+            //when going up, must ganrantee current col is valid
             if(left <= right)
                 for(int i = down; i >= up; i--)
                     ans.add(m[i][left]);
             left++;
+            
+            //otherwise for cases like [[2,3]] (which is only one row or one col), we can get wrong answer, add too many numbers
         }
         
         return ans;
