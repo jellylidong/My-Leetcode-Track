@@ -20,7 +20,7 @@ public class Solution {
         cur = head;
         while(cur != null){
             RandomListNode node = cur.next;
-            node.random = cur.random.next;
+            node.random = (cur.random == null)? null: cur.random.next;
         }
         
         RandomListNode helper = new RandomListNode(0);
