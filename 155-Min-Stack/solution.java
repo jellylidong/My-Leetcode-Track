@@ -1,41 +1,36 @@
 public class MinStack {
 
-
-    //!!!!!!
-    //POOR performance
     /** initialize your data structure here. */
     Stack<Integer> stack;
-    int min;
     public MinStack() {
         stack = new Stack<>();
-        min = Integer.MAX_VALUE;
     }
     
     public void push(int x) {
-        
-        min = Math.min(min, x);
+        int curMin;
+        if(!stack.isEmpty())
+            curMin = stack.peek();
+        else
+            curMin = Integer.MAX_VALUE;
+        curMin = Math.min(curMin, x);
         stack.push(x);
-        stack.push(min);
+        stack.push(curMin);
     }
     
     public void pop() {
-        if(stack.isEmpty())
-            return;
         stack.pop();
         stack.pop();
-        min = stack.isEmpty()? Integer.MAX_VALUE: stack.peek();
     }
     
     public int top() {
-        
-        int tmp = stack.pop();
-        int top = stack.peek();
-        stack.push(tmp);
-        return top;
+        int n = stack.pop();
+        int n2 = stack.peek();
+        stack.push(n);
+        return n2;
     }
     
     public int getMin() {
-        return min;
+        return stack.peek();
     }
 }
 
