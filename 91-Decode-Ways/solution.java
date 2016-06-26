@@ -1,47 +1,20 @@
 public class Solution {
-    //hard point: how to handle 0 and number > 26
-    
-    int ans;
     public int numDecodings(String s) {
-        ans = 0;
         if(s.length() == 0)
-            return ans;
-        int[] dp = new int[s.length()]; //dp[i] means decode ways of s.substring(i);
+            return 0;
+        int[] dp = new int[s.length()];
+        dp[0] = (s.charAt(0)-'0') == 0? 0:1;
+        dp[1] = dp[0];
         
-        int len = s.length();
-        dp[len-1] = Integer.parseInt(s.substring(len-1, len)) > 0? 1: 0;
-        if(len >= 2){
-            int n = Integer.parseInt(s.substring(len-2));
-            if(n < 10)
-                dp[len-2] = 0;
-            else if(n <= 26)
-                dp[len-2] = 1 + dp[len-1];
-            else  if(n%10 != 0)
-                dp[len-2] = 1;
-            else
-                return 0;
-            
+        int tmp = Integer.parseInt(s.substring(0, 2));
+        dp[1] += (tmp >= 10 && tmp <= 26)? 1:0;
+        
+        for(int i = 2; i < s.length(); i++){
+            dp[i] += dp[i-1];
+            tmp = Integer.parseInt(s.substring(i-1, i+1));
+            dp[i] += (tmp >= 10 && tmp <= 26)? dp[i-2]:0;
         }
         
-        for(int i = len-3; i >= 0; i--){
-            int n = Integer.parseInt(s.substring(i, i+1));
-            if(n == 0)
-                dp[i] = 0;
-            else dp[i] += dp[i+1];
-            n = Integer.parseInt(s.substring(i, i+2));
-            if(n < 10)
-                dp[i] = 0;
-            else if(n <= 26)
-                dp[i] += dp[i+2];
-            else if(n%10 != 0)
-                dp[i] = dp[i+1];
-            else
-                return 0;
-        }
-        
-        return dp[0];
+        return dp[s.length()-1];
     }
-    
-   // "230" 
-   // "611"
 }
