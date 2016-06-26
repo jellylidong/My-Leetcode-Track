@@ -16,10 +16,11 @@ public class Solution {
             return map.get(node);
         else{
             UndirectedGraphNode cur = new UndirectedGraphNode(node.label);
+            map.put(node, cur);
             for(UndirectedGraphNode n: node.neighbors){
                 cur.neighbors.add(cloneGraph(n));
             }
-            map.put(node, cur);
+            
             return cur;
         }
     }
