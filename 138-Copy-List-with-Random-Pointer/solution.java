@@ -21,6 +21,7 @@ public class Solution {
         while(cur != null){
             RandomListNode node = cur.next;
             node.random = (cur.random == null)? null: cur.random.next;
+            cur = cur.next.next;
         }
         
         RandomListNode helper = new RandomListNode(0);
@@ -28,7 +29,8 @@ public class Solution {
         
         while(head != null){
             cur.next = head.next;
-            head = head.next.next;
+            head.next = head.next.next;
+            head = head.next;
             cur = cur.next;
         }
         
