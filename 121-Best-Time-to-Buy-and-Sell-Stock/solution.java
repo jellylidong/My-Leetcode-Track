@@ -4,6 +4,9 @@ public class Solution {
             return 0;
         int min = prices[0];
         int ans = 0;
+        
+        //!!!
+        //update min otherwise update max
         for(int i = 1; i < prices.length; i++){
             if(prices[i] < min)
                 min = prices[i];
