@@ -13,10 +13,7 @@ Return:
   ["bat"]
 ]</pre>
 
-**Note:**  
-
-1.  For the return value, each _inner_ list's elements must follow the lexicographic order.
-2.  All inputs will be in lower-case.
+**Note:** All inputs will be in lower-case.
 
 <div>
 
