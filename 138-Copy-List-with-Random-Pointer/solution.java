@@ -20,6 +20,7 @@ public class Solution {
         cur = head;
         while(cur != null){
             RandomListNode node = cur.next;
+            //node.random can be null
             node.random = (cur.random == null)? null: cur.random.next;
             cur = cur.next.next;
         }
