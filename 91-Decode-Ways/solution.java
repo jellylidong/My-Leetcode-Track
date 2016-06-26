@@ -18,6 +18,6 @@ public class Solution {
         
         return dp[s.length()-1];
     }
-    
+    //don't forget number start with 0, a single 0 has 0 way
     //"10"
 }
