@@ -20,12 +20,14 @@ public class Solution {
                 ans.add(m[i][right]);
             right--;
             
-            for(int i = right; i >= left; i--)
-                ans.add(m[down][i]);
+            if(up <= down)
+                for(int i = right; i >= left; i--)
+                    ans.add(m[down][i]);
             down--;
             
-            for(int i = down; i >= up; i++)
-                ans.add(m[i][left]);
+            if(left <= right)
+                for(int i = down; i >= up; i--)
+                    ans.add(m[i][left]);
             left++;
         }
         
