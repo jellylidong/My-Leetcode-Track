@@ -24,6 +24,7 @@ public class LRUCache {
             pre.next = next;
             next.pre = pre;
             
+            //put the node before tail
             cur.pre = tail.pre;
             tail.pre.next = cur;
             cur.next = tail;
@@ -45,6 +46,7 @@ public class LRUCache {
             map.put(key, newNode);
             
             size++;
+            //remove the least used node
             if(size > cap){
                 node toRm = head.next;
                 map.remove(toRm.key);
