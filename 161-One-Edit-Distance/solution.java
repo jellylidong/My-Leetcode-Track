@@ -1,8 +1,10 @@
 public class Solution {
     public boolean isOneEditDistance(String s, String t) {
-        //used to handle empty string case like s="a", t=""
+        
         s += "*";
         t += "*";
+        //for cases like one is empty, the other is length 1,
+        //like: "a", ""
         
         String ls = s;
         String ss = t;
@@ -13,7 +15,7 @@ public class Solution {
         }
         
         int li = 0, si = 0;
-        int count = 0;
+        int diffCount = 0;
         
         while(li < ls.length() && si < ss.length()){
             if(ls.charAt(li) == ss.charAt(si)){
@@ -21,21 +23,16 @@ public class Solution {
                 si++;
             }
             else{
-                /*
-                "abs"
-                "bs"
-                */
-                
                 if(ls.length() != ss.length())
                     li++;
                 else{
                     li++;
                     si++;
                 }
-                count++;
+                diffCount++;
             }
         }
         
-        return li == ls.length() && count == 1;
+        return diffCount == 1 && li == ls.length();
     }
 }
