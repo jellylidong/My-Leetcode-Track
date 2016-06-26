@@ -16,11 +16,13 @@ public class Solution {
             return map.get(node);
         else{
             UndirectedGraphNode cur = new UndirectedGraphNode(node.label);
+            //must put to map before dfs,
+            //otherwise deadloop (stack overflow)
             map.put(node, cur);
             for(UndirectedGraphNode n: node.neighbors){
                 cur.neighbors.add(cloneGraph(n));
             }
-            
+            // map.put(node, cur);
             return cur;
         }
     }
