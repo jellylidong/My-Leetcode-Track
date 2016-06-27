@@ -1,41 +1,34 @@
 public class Solution {
-    public List<List<String>> groupStrings(String[] ss) {
-        List<List<String>> ans = new ArrayList<>();
-        if(ss.length == 0)
-            return ans;
-       
-        HashMap<String, ArrayList<String>> map = new HashMap<>();
-        for(String s: ss){
-            String diff = "";
-            if(s.length() == 1)
-                diff = "-1";
+    public List<List<String>> groupStrings(String[] strings) {
+        HashMap<String, List<String>> map = new HashMap<>();
+        for(String s: strings){
+            String code = encode(s);
+            if(map.containsKey(code))
+                map.get(code).add(s);
             else{
-                for(int i = 0; i < s.length()-1; i++){
-                    char c1 = s.charAt(i);
-                    char c2 = s.charAt(i+1);
-                    int tmp = (c1-c2 < 0)? c1-c2+26: c1-c2;
-                    diff = diff + tmp;
-                }
-                    
-            }
-            int len = s.length();
-            String curPair = diff + " " + len;
-            if(map.containsKey(curPair)){
-                map.get(curPair).add(s);
-            }
-            else{
-                ArrayList<String> list = new ArrayList<>();
+                List<String> list = new ArrayList<>();
                 list.add(s);
-                ans.add(list);
-                map.put(curPair, list);
+                map.put(code, list);
             }
         }
-        
-        for(List<String> list: ans)
-            Collections.sort(list);
+        List<List<String>> ans = new ArrayList<>();
+        for(List<String> list: map.values())
+            ans.add(list);
         return ans;
-        
     }
     
-    
+    public String encode(String s){
+        if(s.length() == 0)
+            return "";
+        StringBuilder sb = new StringBuilder();
+        char c = s.charAt(0);
+        sb.append(0).append(",");
+        for(int i= 1; i < s.length(); i++){
+            int diff = s.charAt(i) - c;
+            if(diff < 0)
+                diff += 26;
+            sb.append(diff).append(",");
+        }
+        return sb.toString();
+    }
 }
