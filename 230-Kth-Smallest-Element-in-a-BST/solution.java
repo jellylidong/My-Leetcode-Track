@@ -8,15 +8,14 @@
  * }
  */
 public class Solution {
- 
     public int kthSmallest(TreeNode root, int k) {
-        int num = count(root.left);
-        if(k <= num)
+        int left = count(root.left);
+        if(k < left)
             return kthSmallest(root.left, k);
-        else if(k == num+1)
+        else if(1+left == k)
             return root.val;
         else
-            return kthSmallest(root.right, k-num-1);
+            return kthSmallest(root.right, k-(left+1));
     }
     
     public int count(TreeNode root){
@@ -26,10 +25,3 @@ public class Solution {
         return 1 + count(root.left) + count(root.right);
     }
 }
-
-/*explain
-count the number of left subtree;
-if k <= count, it means the target is in the left subtree, return with func(root.left, k)
-else if k == count+1, it means current root is our target, so return root.val
-else(k > count+1), the target is in the right substree, so just return with func(root.right, k-(count+1))
-*/
