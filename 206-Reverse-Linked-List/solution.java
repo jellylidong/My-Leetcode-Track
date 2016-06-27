@@ -8,26 +8,21 @@
  */
 public class Solution {
     public ListNode reverseList(ListNode head) {
+        // ListNode helper = new ListNode(0);
+        // helper.next= head;
+        
         if(head == null)
             return null;
-            
-        if(head.next == null)
-            return head;
-            
-        // ListNode helper = new ListNode(0);
-        // helper.next = head;
         
-        ListNode next = head;
+        ListNode pre = null;
         ListNode cur = head;
-        ListNode pre = null; 
-        //regard the linked list as a circle, with a "null node"
-        // pre is the end of the linked list, should be null initially
+        ListNode next = head.next;
         
         while(cur != null){
-           next = cur.next;
-           cur.next = pre;
-           pre = cur;
-           cur = next;
+            next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
         }
         
         return pre;
