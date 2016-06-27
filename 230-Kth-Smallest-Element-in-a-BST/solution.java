@@ -10,7 +10,7 @@
 public class Solution {
     public int kthSmallest(TreeNode root, int k) {
         int left = count(root.left);
-        if(k < left)
+        if(k <= left)
             return kthSmallest(root.left, k);
         else if(1+left == k)
             return root.val;
