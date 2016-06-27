@@ -1,29 +1,43 @@
 public class Solution {
     public void reverseWords(char[] s) {
-        //reverse the whole string first
-        //then reverse words one by one
-        
-        reverse(s, 0, s.length-1);
-        int i = 0; int j = 0;
-        while(i < s.length){
-            while(j < s.length && s[j] != ' ')
-                j++;
-            
-            j--;
-                
-            reverse(s, i, j);
-            j += 2;
-            i = j;
-        }
-    }
-    
-    public void reverse(char[] s, int lo, int hi){
+        int lo = 0;
+        int hi = s.length-1;
         while(lo < hi){
-            char tmp = s[lo];
+            char c = s[lo];
             s[lo] = s[hi];
-            s[hi] = tmp;
+            s[hi] = c;
             lo++;
             hi--;
+        }
+        
+        lo = 0;
+        hi = 0;
+        while(hi < s.length){
+            if(s[hi] == ' '){
+                int curLo = lo;
+                int curHi = hi-1;
+                while(curLo < curHi){
+                    char c = s[curLo];
+                    s[curLo] = s[curHi];
+                    s[curHi] = c;
+                    curLo++;
+                    curHi--;
+                }
+                while(hi < s.length && s[hi] == ' ')
+                    hi++;
+                lo = hi;
+            }
+            else
+                hi++;
+        }
+        int curLo = lo;
+        int curHi = hi-1;
+        while(curLo < curHi){
+            char c = s[curLo];
+            s[curLo] = s[curHi];
+            s[curHi] = c;
+            curLo++;
+            curHi--;
         }
     }
 }
