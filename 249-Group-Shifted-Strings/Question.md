@@ -9,7 +9,7 @@ Given a string, we can "shift" each of its letter to its successive letter, for 
 Given a list of strings which contains only lowercase alphabets, group all strings that belong to the same shifting sequence.
 
 For example, given: `["abc", "bcd", "acef", "xyz", "az", "ba", "a", "z"]`,  
-Return:
+A solution is:
 
 <pre>[
   ["abc","bcd","xyz"],
@@ -17,8 +17,6 @@ Return:
   ["acef"],
   ["a","z"]
 ]</pre>
-
-**Note:** For the return value, each _inner_ list's elements must follow the lexicographic order.
 
 <div>
 
