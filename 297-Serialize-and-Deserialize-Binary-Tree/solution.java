@@ -8,12 +8,11 @@
  * }
  */
 public class Codec {
-    //preorder recursion traverse
 
     // Encodes a tree to a single string.
     public String serialize(TreeNode root) {
         if(root == null)
-            return "null";
+            return "";
         StringBuilder sb = new StringBuilder();
         buildString(root, sb);
         return sb.toString();
@@ -21,9 +20,9 @@ public class Codec {
     
     public void buildString(TreeNode root, StringBuilder sb){
         if(root == null)
-            sb.append("null" + ",");
+            sb.append("null,");
         else{
-            sb.append(root.val + ",");
+            sb.append(root.val+",");
             buildString(root.left, sb);
             buildString(root.right, sb);
         }
@@ -31,23 +30,25 @@ public class Codec {
 
     // Decodes your encoded data to tree.
     public TreeNode deserialize(String data) {
+        if(data.length() == 0)
+            return null;
+        Queue<String> q = new LinkedList<>();
         String[] ss = data.split(",");
-        List<String> list = Arrays.asList(ss);
-        Queue<String> q = new LinkedList<>(list);
-        
+        for(String s: ss)
+            q.offer(s);
         return buildTree(q);
     }
     
     public TreeNode buildTree(Queue<String> q){
-        String cur = q.poll();
-        if(cur.equals("null"))
-            return null;
-        else{
-            TreeNode root = new TreeNode(Integer.parseInt(cur));
-            root.left = buildTree(q);
-            root.right = buildTree(q);
-            return root;
-        }
+            String str = q.poll();
+            if(str.equals("null"))
+                return null;
+            else{
+                TreeNode root = new TreeNode(Integer.parseInt(str));
+                root.left = buildTree(q);
+                root.right = buildTree(q);
+                return root;
+            }
     }
 }
 
