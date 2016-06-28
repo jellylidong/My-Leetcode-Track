@@ -22,7 +22,7 @@ public class Logger {
             map.remove(q.poll());
         }
         for(int i = 1; i < 10; i++){
-            if(map.containsKey(timestamp-i) && map.get(timestamp-i).contains(message))
+            if(timestamp-i >= q.peek() && map.containsKey(timestamp-i) && map.get(timestamp-i).contains(message))
                 return false;
         }
         // map.put(timestamp, message);
