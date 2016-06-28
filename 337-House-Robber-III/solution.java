@@ -8,6 +8,11 @@
  * }
  */
 public class Solution {
+    
+    //what we need to notice is that we can choose to rob or not to rob one node
+    //so for each node, it has two different values (robbed and not robbed)
+    
+    //node, (robbed, value)
     HashMap<TreeNode, HashMap<Boolean, Integer>> map;
     public int rob(TreeNode root) {
         map = new HashMap<>();
@@ -29,7 +34,7 @@ public class Solution {
             map.get(root).put(robbed, val);
             return val;
         }
-        else{
+        else{//note here, roobbed == false here, so we still put robbbed, not !robbed
             if(map.get(root).containsKey(robbed))
                 return map.get(root).get(robbed);
             int val = Math.max(rob(root.left, true), rob(root.left, false)) + Math.max(rob(root.right, true), rob(root.right, false));
