@@ -8,33 +8,19 @@
  * }
  */
 public class Solution {
-
     public int rob(TreeNode root) {
-        HashMap<TreeNode, Integer> map = new HashMap<>();
-        return rob(root, map);
-       
+        return Math.max(rob(root, true), rob(root, false));
     }
     
-    public int rob(TreeNode root, HashMap<TreeNode, Integer> map){
+    public int rob(TreeNode root, boolean robbedCur){
         if(root == null)
             return 0;
-        if(map.containsKey(root))
-            return map.get(root);
             
-        int val = 0; 
-        //the val for when current root is robbed
-        //if current root is robbed, we can only start from root.left.children and root,right.children
-        if(root.left != null){
-            val += rob(root.left.left, map) + rob(root.left.right, map);
+        if(robbedCur){
+            return root.val + rob(root.left, false) + rob(root.right, false);
         }
-        if(root.right != null){
-            val += rob(root.right.left, map) + rob(root.right.right, map);
+        else{
+            return Math.max(rob(root.left, true), rob(root.left, false)) + Math.max(rob(root.right, true), rob(root.right, false));
         }
-        
-        //rob(root.left) + rob(root.right) is the value for when current root is not robbed
-        int max = Math.max(root.val + val, rob(root.left, map) + rob(root.right, map));
-        map.put(root, max);
-        return max;
-        
     }
 }
