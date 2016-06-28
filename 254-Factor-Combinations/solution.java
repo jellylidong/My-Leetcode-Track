@@ -9,28 +9,19 @@ public class Solution {
             return ans;
         for(int i = start; i*i <= n; i++){
             if(n%i == 0){
-                List<Integer> newList = new ArrayList<>();
-                newList.add(i);
-                newList.add(n/i);
-                ans.add(newList);
+                List<Integer> list = new ArrayList<>();
+                list.add(i);
+                list.add(n/i);
+                ans.add(list);
                 List<List<Integer>> subAns = getFactors(n/i, i);
-                for(List<Integer> list: subAns){
-                    newList = new ArrayList<>();
-                    newList.add(i);
-                    newList.addAll(list);
-                    ans.add(newList);
+                for(List<Integer> subList: subAns){
+                    list = new ArrayList<Integer>();
+                    list.add(i);
+                    list.addAll(subList);
+                    ans.add(list);
                 }
-                
             }
         }
-        
-        //no need to do this, the line 12 code already solve the case when there's only one number left
-        // if(ans.size() == 0 && start != n){
-        //     List<Integer> newList = new ArrayList<>();
-        //     newList.add(n);
-        //     ans.add(newList);
-        // }
-        
         return ans;
     }
 }
