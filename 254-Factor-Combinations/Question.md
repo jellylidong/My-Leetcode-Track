@@ -12,9 +12,8 @@ Write a function that takes an integer _n_ and return all possible combinations 
 
 **Note:**  
 
-1.  Each combination's factors must be sorted ascending, for example: The factors of 2 and 6 is `[2, 6]`, not `[6, 2]`.
-2.  You may assume that _n_ is always positive.
-3.  Factors should be greater than 1 and less than _n_.
+1.  You may assume that _n_ is always positive.
+2.  Factors should be greater than 1 and less than _n_.
 
 **Examples:**  
 input: `1`  
