@@ -1,9 +1,9 @@
 class TrieNode {
     // Initialize your data structure here.
-    TrieNode[] get;
+    TrieNode[] nodes;
     boolean isWord;
     public TrieNode() {
-        get = new TrieNode[26];
+        nodes = new TrieNode[26];
         isWord = false;
     }
 }
@@ -18,12 +18,12 @@ public class Trie {
     // Inserts a word into the trie.
     public void insert(String word) {
         TrieNode cur = root;
-        char[] cs = word.toCharArray();
         for(int i = 0; i < word.length(); i++){
-            int id = cs[i] - 'a';
-            if(cur.get[id] == null)
-                cur.get[id] = new TrieNode();
-            cur = cur.get[id];
+            char c = word.charAt(i);
+            if(cur.nodes[c-'a'] == null){
+                cur.nodes[c-'a'] = new TrieNode();
+            }
+            cur = cur.nodes[c-'a'];
         }
         cur.isWord = true;
     }
@@ -31,34 +31,28 @@ public class Trie {
     // Returns if the word is in the trie.
     public boolean search(String word) {
         TrieNode cur = root;
-        char[] cs = word.toCharArray();
         for(int i = 0; i < word.length(); i++){
-            int id = cs[i] - 'a';
-            if(cur.get[id] == null){
-                // System.out.println("here");
+            char c = word.charAt(i);
+            if(cur.nodes[c-'a'] == null){
                 return false;
             }
-            cur = cur.get[id];
+            cur = cur.nodes[c-'a'];
         }
-        //finally, cur become the sub node of last char of word
-        
         return cur.isWord;
     }
 
     // Returns if there is any word in the trie
     // that starts with the given prefix.
-    public boolean startsWith(String pre) {
+    public boolean startsWith(String prefix) {
         TrieNode cur = root;
-        char[] cs = pre.toCharArray();
-        for(int i = 0; i < pre.length(); i++){
-            int id = cs[i] - 'a';
-            if(cur.get[id] == null)
+        for(int i = 0; i < prefix.length(); i++){
+            char c = prefix.charAt(i);
+            if(cur.nodes[c-'a'] == null){
                 return false;
-            cur = cur.get[id];
+            }
+            cur = cur.nodes[c-'a'];
         }
-        
         return true;
-            
     }
 }
 
