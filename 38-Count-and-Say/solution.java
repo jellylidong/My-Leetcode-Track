@@ -1,26 +1,23 @@
 public class Solution {
     public String countAndSay(int n) {
-        String ans = "1";
-        if(n == 1)
-            return ans;
+        int i = 1;
+        String str = "1";
+        while(i < n){
             
-        for(int i = 2; i <= n; i++){ //i is the length of next ans
-            // System.out.println(ans);
             StringBuilder sb = new StringBuilder();
-            for(int j = 0; j < ans.length();){ //j-1 is the position of current ans
-                int count = 1;
-                char c = ans.charAt(j);
-                while(j+1 < ans.length() && ans.charAt(j+1) == c){
+            for(int j = 0; j < str.length();){
+                String num = str.substring(j, j+1);
+                int count = 0;
+                do{
                     j++;
                     count++;
-                }
+                }while(j < str.length() && str.charAt(j) == str.charAt(j-1));
                 sb.append(count);
-                sb.append(c);
-                j++;
+                sb.append(num);
             }
-            ans = sb.toString();
+            str = sb.toString();
+            i++;
         }
-        
-        return ans;
+        return str;
     }
 }
