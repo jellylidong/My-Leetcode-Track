@@ -19,7 +19,7 @@ public class Solution {
                     }
                     else
                         cut[i] = Math.min(cut[i], 1+cut[j+1]); 
-                        // since isP[i][j],we may cut it as s.substring(i, j+1) ans s.substring(i+1)
+                        // since isP[i][j],we may cut it as s.substring(i, j+1) and s.substring(j+1)
                 } 
             }
         }
