@@ -40,7 +40,7 @@ public class Solution {
                 else{
                     //since current range is rosted,
                     //if range nums[mid, hi] is not always ascending, then the min must be at left of mid(inclusive)
-                    hi = mid;
+                    hi = mid; // note; not always ascedning means we can not decide if nums[mid] is the min, so we must include mid
                 }
             }
         }
