@@ -1,8 +1,8 @@
 public class Solution {
-    public int ladderLength(String beginWord, String endWord, Set<String> dict) {
+    public int ladderLength(String beginWord, String endWord, Set<String> wordList) {
         Queue<String> toVisit = new LinkedList<>();
-        genNext(beginWord, dict, toVisit);
-        dict.add(endWord);
+        genNext(beginWord, toVisit, wordList);
+        wordList.add(endWord);
         
         int step = 2;
         while(!toVisit.isEmpty()){
@@ -11,26 +11,28 @@ public class Solution {
                 String cur = toVisit.poll();
                 if(cur.equals(endWord))
                     return step;
-                genNext(cur, dict, toVisit);
+                else
+                    genNext(cur, toVisit, wordList);
             }
             step++;
         }
+        
         return 0;
     }
     
-    public void genNext(String cur, Set<String> dict, Queue<String> toVisit){
-        char[] cs = cur.toCharArray();
+    public void genNext(String s, Queue<String> toVisit, Set<String> wordList){
+        char[] cs = s.toCharArray();
         for(int i = 0; i < cs.length; i++){
-            char tmp = cs[i];
+            char pre = cs[i];
             for(char c = 'a'; c <= 'z'; c++){
                 cs[i] = c;
-                String s = new String(cs);
-                if(dict.contains(s)){
-                    toVisit.offer(s);
-                    dict.remove(s);
+                String newStr = new String(cs);
+                if(wordList.contains(newStr)){
+                    toVisit.offer(newStr);
+                    wordList.remove(newStr);
                 }
             }
-            cs[i] = tmp;
+            cs[i] = pre;
         }
     }
 }
