@@ -11,7 +11,7 @@ public class Solution {
             if(Character.isDigit(c)){
                 num = 10*num + (c-'0');
             }
-            else{
+            else if(c != ' '){
                 //if not a digit, then current char can only be a sign
                 //so we need to update sign
                 //before update sign, we need to evaluate current number and current sign
