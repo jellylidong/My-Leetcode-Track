@@ -1,77 +1,83 @@
 public class Solution {
-    public String alienOrder(String[] words) {
-        //the tricky part of this problem is to build graph egds [char a, char b], ie a is after b
-        //once graph is built up, we can use dfs or bfs topology sort
-        
+        public String alienOrder(String[] words) {
         HashSet<Character> charSet = new HashSet<>();
-        for(String s: words){
-            for(int i = 0; i < s.length(); i++)
+        genCharSet(charSet, words);
+        HashMap<Character, ArrayList<Character>> graph = new HashMap<>(); //key: char, value:chars after key (in alien order)
+        initGraph(charSet, graph);
+        buildGraph(graph, words);
+        StringBuilder sb = new StringBuilder();
+        BFS(graph, sb);
+        return sb.toString();
+    }
+
+    public void genCharSet(HashSet<Character> charSet, String[] words){
+        for(String s:words){
+            for(int i = 0; i < s.length(); i++){
                 charSet.add(s.charAt(i));
+            }
         }
-        
-        //init graph
-        HashMap<Character, List<Character>> graph = new HashMap<>();
-        for(char c: charSet)
-            graph.put(c, new ArrayList<>());
-            
-        //build graph
+    }
+
+    public void initGraph(HashSet<Character> charSet, HashMap<Character, ArrayList<Character>> graph){
+        for(char c: charSet){
+            if(!graph.containsKey(c)){
+                graph.put(c, new ArrayList<Character>());
+            }
+        }
+    }
+
+    public void buildGraph(HashMap<Character, ArrayList<Character>> graph, String[] words){
         for(int i = 0; i < words.length-1; i++){
             for(int j = i+1; j < words.length; j++){
                 for(int k = 0; k < Math.min(words[i].length(), words[j].length()); k++){
                     char ci = words[i].charAt(k);
                     char cj = words[j].charAt(k);
-                    
                     if(ci != cj){
-                        // cj is after ci
-                        if(!graph.get(ci).contains(cj))
+                        if(!graph.get(ci).contains(cj)){
                             graph.get(ci).add(cj);
-                        break;
+                            break;
+                        }
                     }
                 }
             }
         }
-        
-        HashSet<Character> alreadyAdded = new HashSet<Character>();
-        HashMap<Character, Boolean> visited = new HashMap<>();
-        for(char c: charSet)
-            visited.put(c, false);
-        StringBuilder sb = new StringBuilder();
-        
-        for(char c: charSet){
-            if(!dfs(c, graph, visited, alreadyAdded, sb))
-                return "";
-        }
-        
-        return sb.reverse().toString();
     }
-    
-    public boolean dfs(char c, HashMap<Character, List<Character>> graph, HashMap<Character, Boolean> visited, HashSet<Character> alreadyAdded, StringBuilder sb){
-        if(visited.get(c))
-            return false;
-            
-        //this early termination is needed
-        //otherwise, TLE
-        if(alreadyAdded.contains(c))
-            return true;
-        // if(graph.get(c).size() == 0){
-        //     if(!alreadyAdded.contains(c)){
-        //         alreadyAdded.add(c);
-        //         sb.append(c);
-        //     }
-        //     return true;
-        // }
-        else{
-            visited.put(c, true);
-            for(char cur: graph.get(c)){
-                if(!dfs(cur, graph, visited, alreadyAdded, sb))
-                    return false;
-            }
-            
-            alreadyAdded.add(c);
-            sb.append(c);
-            
-            visited.put(c, false);
+
+    public void BFS(HashMap<Character, ArrayList<Character>> graph, StringBuilder sb){
+        HashMap<Character, Integer> in = new HashMap<>();
+        for(char c: graph.keySet()){
+            in.put(c, 0);
         }
-        return true;   
+        for(char c: graph.keySet()){
+            for(char cc: graph.get(c)){
+                in.put(cc, in.get(cc)+1); //number of chars before cc
+            }
+        }
+
+        Queue<Character> q = new LinkedList<>();
+        HashSet<Character> alreadyAdded = new HashSet<>();
+
+        for(char c: in.keySet()){
+            if(in.get(c) == 0){
+                q.offer(c);
+                in.remove(c);
+            }
+        }
+
+        while(!q.isEmpty()){
+            char c = q.poll();
+            sb.append(c);
+            for(char cc: graph.get(c)){
+                if(!in.containsKey(cc))
+                    continue;
+                in.put(cc, in.get(cc)-1);
+                if(in.get(cc) == 0){
+                    q.offer(cc);
+                    in.remove(cc);
+                }
+            }
+        }
+        for(char c: in.keySet())
+            sb.append(c);
     }
 }
