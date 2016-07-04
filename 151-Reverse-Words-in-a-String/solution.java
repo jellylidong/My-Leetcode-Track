@@ -1,18 +1,34 @@
 public class Solution {
     public String reverseWords(String s) {
-        //must trim the head and tail space
-        //why??????
+        int lo = 0;
+        int hi = 0;
         
-        String[] ss = s.trim().split("\\s+"); // regx of >= 1 spaces
-        StringBuilder sb = new StringBuilder();
-        if(ss.length > 0){
-            for(int i = ss.length-1; i > 0; i--)
-                sb.append(ss[i] + " ");
-            sb.append(ss[0]);
+        StringBuilder sb = new StringBuilder(s.trim());
+        sb.reverse();
+        
+        while(true){
+            while(hi < s.length() && sb.charAt(hi) != ' ')
+                hi++;
+            int curLo = lo;
+            int curHi = hi-1;
+            while(curLo < curHi){
+                char tmp = sb.charAt(curLo);
+                sb.setCharAt(curLo, sb.charAt(curHi));
+                sb.setCharAt(curHi, tmp);
+                curLo++;
+                curHi--;
+            }
+            
+            while(hi < s.length() && sb.charAt(hi) == ' '){
+                sb.append(' ');
+                hi++;
+            }
+            lo = hi;
+            if(hi == s.length())
+                break;
         }
         
         return sb.toString();
+        
     }
-    
-    
 }
