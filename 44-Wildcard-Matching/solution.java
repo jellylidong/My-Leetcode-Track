@@ -8,7 +8,7 @@ public class Solution {
         if(lo > 0)  lo--;
         
         int hi = p.length()-1;
-        while(lo > hi && p.charAt(hi) == '*'){
+        while(lo < hi && p.charAt(hi) == '*'){
             hi--;
         }
         if(hi < p.length()-1) hi++;
@@ -18,7 +18,13 @@ public class Solution {
         int ls = s.length();
         int lp = p.length();
         boolean[][] dp = new boolean[ls+1][lp+1]; // s.substring(i, ls) matches p.substring(j, lp)
-        dp[ls][lp] = true;
+        dp[ls][lp] = true; //empty matches empty
+        
+        //!!!!!!!!
+        if(lp-1 >= 0)
+            dp[ls][lp-1] = p.charAt(lp-1) =='*';//for case s = "aa", p = "*"
+            
+             
         for(int i = ls-1; i >= 0; i--){
             for(int j = lp-1; j >= 0; j--){
                 if(s.charAt(i) == p.charAt(j))
