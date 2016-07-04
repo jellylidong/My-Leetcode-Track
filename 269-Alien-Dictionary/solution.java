@@ -2,12 +2,14 @@ public class Solution {
         public String alienOrder(String[] words) {
         HashSet<Character> charSet = new HashSet<>();
         genCharSet(charSet, words);
+        
         HashMap<Character, ArrayList<Character>> graph = new HashMap<>(); //key: char, value:chars after key (in alien order)
         initGraph(charSet, graph);
         buildGraph(graph, words);
+        
         StringBuilder sb = new StringBuilder();
-        // print(graph);
         BFS(graph, sb);
+        
         return sb.toString();
     }
 
@@ -34,10 +36,11 @@ public class Solution {
                     char ci = words[i].charAt(k);
                     char cj = words[j].charAt(k);
                     if(ci != cj){
+                        //once we get ci != cj, we can know that ci is before cj,
+                        //but we can not know the order after k
+                        //so we must break!!!
                         if(!graph.get(ci).contains(cj)){
                             graph.get(ci).add(cj);
-                            // if(ci == 'f')
-                            //     System.out.println(words[i] + " " + words[j]);
                         }
                         break;
                     }
@@ -58,34 +61,30 @@ public class Solution {
         }
 
         Queue<Character> q = new LinkedList<>();
-        HashSet<Character> toRm = new HashSet<>();
 
         for(char c: in.keySet()){
             if(in.get(c) == 0){
                 q.offer(c);
-                // toRm.add(c);
+                
             }
         }
-        // for(char c:toRm)
-        //     in.remove(c);
 
         while(!q.isEmpty()){
             char c = q.poll();
             sb.append(c);
             for(char cc: graph.get(c)){
-                // if(!in.containsKey(cc))
-                //     continue;
                 in.put(cc, in.get(cc)-1);
                 if(in.get(cc) == 0){
                     q.offer(cc);
-                    // in.remove(cc);
                 }
             }
         }
         
-        // System.out.println(sb.length());
-        // System.out.println(graph.size());
-        
+        //if sb.length != grpah.size()
+        //graph.size is the number of all chars
+        //so it means current sb does not have all chars
+        //so there's a circle in the graph
+        //ie we can not get valid order
         if(sb.length() != graph.size())    
             sb.delete(0, sb.length());
     }
