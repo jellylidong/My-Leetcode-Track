@@ -9,6 +9,9 @@
  */
 public class Solution {
     public List<List<Integer>> verticalOrder(TreeNode root) {
+        List<List<Integer>> ans = new ArrayList<>();
+        if(root == null)
+            return ans;
         HashMap<Integer, ArrayList<Integer>> map = new HashMap<>();
         int left = 0, right = 0;
         TreeNode cur = root.left;
@@ -22,7 +25,7 @@ public class Solution {
             cur = cur.right;
         }
         
-        List<List<Integer>> ans = new ArrayList<>();
+        
         for(int i = 0; i < left+right+1; i++)
             ans.add(new ArrayList<Integer>());
         add(root, 0, map);
