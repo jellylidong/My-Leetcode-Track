@@ -8,42 +8,51 @@
  * }
  */
 public class Solution {
+    int min = 0;
+    int max = 0;
     public List<List<Integer>> verticalOrder(TreeNode root) {
+        //instead of using a pair class that contains TreeNode and its level value
+        //we can use level order BFS and use a queue to store its level
+        
         List<List<Integer>> ans = new ArrayList<>();
         if(root == null)
             return ans;
+        
+        int min = 0;
+        int max = 0;
+        Queue<TreeNode> q = new LinkedList<>();
+        Queue<Integer> level = new LinkedList<>();
         HashMap<Integer, ArrayList<Integer>> map = new HashMap<>();
-        int left = 0, right = 0;
-        TreeNode cur = root.left;
-        while(cur != null){
-            left++;
-            cur = cur.left;
-        }
-        cur = root.right;
-        while(cur != null){
-            right++;
-            cur = cur.right;
+        q.offer(root);
+        level.offer(0);
+        
+        while(!q.isEmpty()){
+            int size = q.size();
+            for(int i = 0; i < size; i++){
+                TreeNode cur = q.poll();
+                int l = level.poll();
+                if(!map.containsKey(l))
+                    map.put(l, new ArrayList<Integer>());
+                map.get(l).add(cur.val);
+                min = Math.min(min, l);
+                max = Math.max(max, l);
+                if(cur.left != null){
+                    q.offer(cur.left);
+                    level.offer(l-1);
+                }
+                if(cur.right != null){
+                    q.offer(cur.right);
+                    level.offer(l+1);
+                }
+            }
         }
         
-        
-        for(int i = 0; i < left+right+1; i++)
-            ans.add(new ArrayList<Integer>());
-        add(root, 0, map);
-        for(int i: map.keySet()){
-            ans.set(left+i, map.get(i));
+        for(int i = min; i <= max; i++){
+            ans.add(map.get(i));
         }
+        
         return ans;
-        
     }
     
-    public void add(TreeNode root, int level, HashMap<Integer, ArrayList<Integer>> map){
-        if(root == null)
-            return;
-        if(!map.containsKey(level))
-            map.put(level, new ArrayList<Integer>());
-            
-        map.get(level).add(root.val);
-        add(root.left, level-1, map);
-        add(root.right, level+1, map);
-    }
+    
 }
