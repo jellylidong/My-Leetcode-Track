@@ -39,6 +39,8 @@ public class Solution {
     
     //above code can not handle case [-2147483648] when we set the pre value int_min
     //to solve this, this a TreeNode instead
+    
+    //In order traversal
     TreeNode pre = null;
     
     public boolean isValidBST(TreeNode root) {
@@ -54,6 +56,7 @@ public class Solution {
             return true;
         }
         boolean left = isValidBST(root.left);
+        //after this, pre is the left node of root
         if(pre != null && root.val <= pre.val)
             return false;
         else
