@@ -9,39 +9,37 @@
  */
 public class Solution {
     public int minMeetingRooms(Interval[] its) {
-        int n = its.length;
-        int[] ss = new int[n];
-        int[] ee = new int[n];
-        for(int i = 0; i < n; i++){
-            ss[i] = its[i].start;
-            ee[i] = its[i].end;
-        }
-        
-        Arrays.sort(ss);
-        Arrays.sort(ee);
-        
-        int si = 0;
-        int ei = 0;
+        if(its.length == 0)
+            return 0;
+        Arrays.sort(its, new comparatorStart());
+        PriorityQueue<Interval> pq = new PriorityQueue<>(its.length, new comparatorEnd());
         int count = 0;
-        int ans = 0;
-        while(si < n ){
-            
-            if(ss[si] < ee[ei]){
-                count++;
-                si++;
+        pq.offer(its[0]);
+        
+        for(int i = 1; i < its.length; i++){
+            Interval interval = pq.poll();
+            if(its[i].start >= interval.end){
+                interval.end = its[i].end;
             }
             else{
-                count--;
-                ei++;
+                pq.offer(its[i]);
             }
-                
-            ans = Math.max(ans, count);
-            // else{
-            //     count--;
-            //     ei++;
-            // }
+            pq.offer(interval);
         }
         
-        return ans;
+        return pq.size();
+    }
+    
+    public class comparatorStart implements Comparator<Interval>{
+        @Override
+        public int compare(Interval i1, Interval i2){
+            return i1.start - i2.start;
+        }
+    }
+    public class comparatorEnd implements Comparator<Interval>{
+        @Override
+        public int compare(Interval i1, Interval i2){
+            return i1.end - i2.end;
+        }
     }
 }
