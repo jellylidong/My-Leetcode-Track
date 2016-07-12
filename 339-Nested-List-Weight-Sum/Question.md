@@ -23,3 +23,9 @@ Given the list `[1,[4,[6]]]`, return **27**. (one 1 at depth 1, one 4 at depth 2
 <div id="tags" class="btn btn-xs btn-warning">Show Tags</div>
 
 <span class="hidebutton">[Depth-first Search](/tag/depth-first-search/)</span></div>
+
+<div>
+
+<div id="similar" class="btn btn-xs btn-warning">Show Similar Problems</div>
+
+<span class="hidebutton">[(M) Nested List Weight Sum II](/problems/nested-list-weight-sum-ii/)</span></div>
