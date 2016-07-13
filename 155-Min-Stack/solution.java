@@ -5,30 +5,27 @@ public class MinStack {
     public MinStack() {
         stack = new Stack<>();
     }
-    
+
     public void push(int x) {
-        int curMin;
+        int min = x;
         if(!stack.isEmpty())
-            curMin = stack.peek();
-        else
-            curMin = Integer.MAX_VALUE;
-        curMin = Math.min(curMin, x);
+            min = Math.min(min, stack.peek());
         stack.push(x);
-        stack.push(curMin);
+        stack.push(min);
     }
-    
+
     public void pop() {
         stack.pop();
         stack.pop();
     }
-    
+
     public int top() {
-        int n = stack.pop();
-        int n2 = stack.peek();
-        stack.push(n);
-        return n2;
+        int min = stack.pop();
+        int res = stack.peek();
+        stack.push(min);
+        return res;
     }
-    
+
     public int getMin() {
         return stack.peek();
     }
