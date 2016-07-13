@@ -44,26 +44,42 @@ public class Solution {
     TreeNode pre = null;
     
     public boolean isValidBST(TreeNode root) {
+        // if(root == null)
+        //     return true;
+            
+        // if(root.left == null && root.right == null){
+            
+        //     if(pre != null && root.val <= pre.val)
+        //         return false;
+                
+        //     pre = root;
+        //     return true;
+        // }
+        // boolean left = isValidBST(root.left);
+        // //after this, pre is the left node of root
+        // if(pre != null && root.val <= pre.val)
+        //     return false;
+        // else
+        //     pre = root;
+        // boolean right = isValidBST(root.right);
+        
+        // return left && right;
+        
         if(root == null)
             return true;
-            
         if(root.left == null && root.right == null){
-            
-            if(pre != null && root.val <= pre.val)
+            if(pre != null && pre.val >= root.val)
                 return false;
-                
             pre = root;
             return true;
         }
         boolean left = isValidBST(root.left);
-        //after this, pre is the left node of root
-        if(pre != null && root.val <= pre.val)
+        if(!left)   return false;
+        if(pre != null && pre.val >= root.val)
             return false;
-        else
-            pre = root;
+        pre = root;
         boolean right = isValidBST(root.right);
-        
-        return left && right;
+        return right;
     }
     
     
