@@ -5,7 +5,7 @@ public class Solution {
             return ans;
 
         Arrays.sort(nums);
-        for(int i = 0; i < nums.length-1; i++){
+        for(int i = 0; i < nums.length-1;){
             int lo = i+1;
             int hi = nums.length-1;
             while(lo < hi){
@@ -15,16 +15,21 @@ public class Solution {
                     lo++;
                 else{
                     List<Integer> list = new ArrayList<>();
-                    list.add(i);
-                    list.add(lo);
-                    list.add(hi);
+                    list.add(nums[i]);
+                    list.add(nums[lo]);
+                    list.add(nums[hi]);
                     ans.add(list);
-                    while(lo+1 < hi && nums[lo+1] == nums[lo])
+                    lo++;
+                    hi--;
+                    while(lo < hi && nums[lo-1] == nums[lo])
                         lo++;
-                    while(lo < hi-1 && nums[hi-1] == nums[hi])
+                    while(lo < hi && nums[hi+1] == nums[hi])
                         hi--;
                 }
             }
+            i++;
+            while(i < nums.length-1 && nums[i] == nums[i-1])
+                i++;
         }
         return ans;
     }
