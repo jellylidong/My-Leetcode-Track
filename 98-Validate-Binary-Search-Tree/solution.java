@@ -65,21 +65,24 @@ public class Solution {
         
         // return left && right;
         
-        if(root == null)
-            return true;
-        if(root.left == null && root.right == null){
-            if(pre != null && pre.val >= root.val)
-                return false;
-            pre = root;
-            return true;
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode pre = null;
+        while(root != null){
+            stack.push(root);
+            root = root.left;
         }
-        boolean left = isValidBST(root.left);
-        if(!left)   return false;
-        if(pre != null && pre.val >= root.val)
-            return false;
-        pre = root;
-        boolean right = isValidBST(root.right);
-        return right;
+        while(!stack.isEmpty()){
+            TreeNode cur = stack.pop();
+            if(pre != null && pre.val >= cur.val)
+                return false;
+            pre = cur;
+            cur = cur.right;
+            while(cur != null){
+                stack.push(cur);
+                cur = cur.left;
+            }
+        }
+        return true;
     }
     
     
